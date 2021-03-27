@@ -1,6 +1,6 @@
 package solution_cn
 
-fun lengthOfLongestSubstring(s: String): Int {
+private fun lengthOfLongestSubstring(s: String): Int {
     var result = 0
     var start = 0
     val end = Array(128) { -1 }
