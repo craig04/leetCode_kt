@@ -3,7 +3,7 @@ package solution
 @Suppress("DEPRECATION")
 fun minimumSize(nums: IntArray, maxOperations: Int): Int {
     var left = 1
-    var right = nums.max() ?: Int.MAX_VALUE
+    var right = nums.maxOrNull() ?: Int.MAX_VALUE
     while (left != right) {
         val m = (right - left).shr(1) + left
         val op = nums.sumBy { (it + m - 1) / m - 1 }

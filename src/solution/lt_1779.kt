@@ -6,7 +6,7 @@ import kotlin.math.abs
 fun nearestValidPoint(x: Int, y: Int, points: Array<IntArray>): Int {
     return points.indices.filter {
         points[it][0] == x || points[it][1] == y
-    }.minBy {
+    }.minByOrNull {
         abs(points[it][0] - x) + abs(points[it][1] - y)
     } ?: -1
 }
