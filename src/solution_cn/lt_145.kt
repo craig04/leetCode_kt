@@ -4,9 +4,10 @@ import base.TreeNode
 import java.util.*
 import kotlin.collections.ArrayList
 
-class Node(val node: TreeNode, var visit: Boolean)
-
 fun postorderTraversal(root: TreeNode?): List<Int> {
+
+    class Node(val node: TreeNode, var visit: Boolean)
+
     val result = ArrayList<Int>()
     val stack = Stack<Node>()
     var temp = root

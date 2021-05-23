@@ -1,6 +1,5 @@
 package solution
 
-@Suppress("DEPRECATION")
 fun minimumSize(nums: IntArray, maxOperations: Int): Int {
     var left = 1
     var right = nums.maxOrNull() ?: Int.MAX_VALUE

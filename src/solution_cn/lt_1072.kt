@@ -1,8 +1,9 @@
 package solution_cn
 
-private class Helper(var n: Int = 0)
-
 fun maxEqualRowsAfterFlips(matrix: Array<IntArray>): Int {
+
+    class Helper(var n: Int = 0)
+
     val map = HashMap<String, Helper>()
     var result = 0
     for (a in matrix) {
