@@ -4,7 +4,7 @@ import java.util.concurrent.Semaphore;
 
 class FooBar {
 
-    private int n;
+    private final int n;
 
     private final Semaphore fooLock = new Semaphore(1);
     private final Semaphore barLock = new Semaphore(0);
