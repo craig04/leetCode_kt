@@ -4,8 +4,8 @@ import java.util.concurrent.Semaphore;
 
 class H2O {
 
-    private Semaphore hydrogenSem = new Semaphore(2);
-    private Semaphore oxygenSem = new Semaphore(2);
+    private final Semaphore hydrogenSem = new Semaphore(2);
+    private final Semaphore oxygenSem = new Semaphore(2);
 
     public H2O() {
 

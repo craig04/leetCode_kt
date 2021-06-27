@@ -5,11 +5,11 @@ import java.util.function.IntConsumer;
 
 class ZeroEvenOdd {
 
-    private int n;
+    private final int n;
 
-    private Semaphore zeroLock = new Semaphore(1);
-    private Semaphore oddLock = new Semaphore(0);
-    private Semaphore evenLock = new Semaphore(0);
+    private final Semaphore zeroLock = new Semaphore(1);
+    private final Semaphore oddLock = new Semaphore(0);
+    private final Semaphore evenLock = new Semaphore(0);
 
     public ZeroEvenOdd(int n) {
         this.n = n;
