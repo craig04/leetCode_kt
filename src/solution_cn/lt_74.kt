@@ -1,6 +1,6 @@
 package solution_cn
 
-fun searchMatrix(matrix: Array<IntArray>, target: Int): Boolean {
+private fun searchMatrix(matrix: Array<IntArray>, target: Int): Boolean {
     val n = matrix.size
     val m = matrix[0].size
     var left = 0

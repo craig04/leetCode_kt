@@ -1,6 +1,6 @@
 package solution_cn
 
-fun singleNumber(nums: IntArray): Int {
+private fun singleNumber(nums: IntArray): Int {
     var a = 0
     var b = 0
     for (n in nums) {
