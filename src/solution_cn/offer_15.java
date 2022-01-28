@@ -1,6 +1,6 @@
 package solution_cn;
 
-class Solution {
+class Solution_Offer_15 {
 
     public int hammingWeight(int n) {
         int result = 0;

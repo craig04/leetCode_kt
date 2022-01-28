@@ -7,7 +7,7 @@ abstract class VersionControl {
     fun isBadVersion(n: Int): Boolean = TODO()
 }
 
-class Solution : VersionControl() {
+class Solution_278 : VersionControl() {
     override fun firstBadVersion(n: Int): Int {
         var l = 1
         var h = n
