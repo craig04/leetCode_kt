@@ -7,7 +7,7 @@ fun constructMaximumBinaryTree(nums: IntArray): TreeNode? {
 }
 
 private fun IntArray.construct(from: Int, to: Int): TreeNode {
-    val pivot = (from..to).maxBy { this[it] }!!
+    val pivot = (from..to).maxByOrNull { this[it] }!!
     return TreeNode(this[pivot]).also {
         if (pivot != from) {
             it.left = construct(from, pivot - 1)

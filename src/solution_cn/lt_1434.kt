@@ -9,7 +9,7 @@ fun numberWays(hats: List<List<Int>>): Int {
             map.getOrPut(it - 1) { ArrayList() }.add(index)
         }
     }
-    val max = map.keys.max()!!
+    val max = map.keys.maxOrNull()!!
     val dist = Array(max + 1) { map[it]?.toIntArray() ?: intArrayOf() }
     val dp = Array(dist.size) { HashMap<Int, Int>() }
     return calc(dist, 0, 1.shl(hats.size) - 1, 0, dp)
