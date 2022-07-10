@@ -3,6 +3,7 @@ package solution
 /**
  * Lower complexity but actually runs slower
  */
+@Suppress("FunctionName")
 fun maxOperations(nums: IntArray, k: Int): Int {
     var ops = 0
     val map = hashMapOf<Int, Int>()
@@ -21,6 +22,7 @@ fun maxOperations(nums: IntArray, k: Int): Int {
 /**
  * Higher complexity but actually runs faster
  */
+@Suppress("FunctionName")
 fun maxOperations_sort(nums: IntArray, k: Int): Int {
     nums.sort()
     var ops = 0

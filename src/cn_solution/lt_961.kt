@@ -6,6 +6,7 @@ import kotlin.random.Random
  * Normal solution
  * O(n) time complexity & O(1) space complexity
  */
+@Suppress("FunctionName")
 fun repeatedNTimes_normal(nums: IntArray): Int {
     for (i in nums.indices step 2)
         if (nums[i] == nums[i + 1])
@@ -20,6 +21,7 @@ fun repeatedNTimes_normal(nums: IntArray): Int {
  * O(1) time complexity in average & O(1) space complexity
  * Infinity time cost in worst case
  */
+@Suppress("FunctionName")
 fun repeatedNTimes_random(nums: IntArray): Int {
     val random = Random(nums.size)
     while (true) {
