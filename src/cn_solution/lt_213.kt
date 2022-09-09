@@ -1,6 +1,6 @@
 package cn_solution
 
-fun rob(nums: IntArray): Int {
+private fun rob(nums: IntArray): Int {
     if (nums.size == 1) {
         return nums.first()
     }

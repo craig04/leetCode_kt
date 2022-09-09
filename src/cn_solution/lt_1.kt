@@ -1,6 +1,6 @@
 package cn_solution
 
-fun twoSum(nums: IntArray, target: Int): IntArray {
+private fun twoSum(nums: IntArray, target: Int): IntArray {
     val map = HashMap<Int, Int>()
     nums.forEachIndexed { index, i ->
         map[target - i]?.run {
