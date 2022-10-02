@@ -1,6 +1,6 @@
 package cn_solution
 
-fun search(nums: IntArray, target: Int): Int {
+private fun search(nums: IntArray, target: Int): Int {
     var l = 0
     var r = nums.size
     while (l < r) {
