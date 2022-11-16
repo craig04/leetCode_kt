@@ -1,6 +1,6 @@
 package cn_solution
 
-fun hIndex(citations: IntArray): Int {
+private fun hIndex(citations: IntArray): Int {
     val n = citations.size
     val c = IntArray(n + 2)
     citations.forEach { c[minOf(it, n)]++ }

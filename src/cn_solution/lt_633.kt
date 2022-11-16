@@ -4,13 +4,15 @@ import kotlin.math.floor
 import kotlin.math.sqrt
 
 fun judgeSquareSum(c: Int): Boolean {
+    val r = floor(sqrt(c.toDouble())).toInt()
     var low = 0
-    var high = floor(sqrt(c.toDouble())).toInt()
+    var high = r
     while (low <= high) {
-        val t = low * low + high * high
+        val a = c - high * high
+        val b = low * low
         when {
-            t < c -> low++
-            t > c -> high--
+            a > b -> low++
+            a < b -> high--
             else -> return true
         }
     }

@@ -1,7 +1,7 @@
 package cn_solution
 
 fun minDays(bloomDay: IntArray, m: Int, k: Int): Int {
-    if (m * k > bloomDay.size) {
+    if (m.toLong() * k > bloomDay.size) {
         return -1
     }
     fun canMake(days: Int): Boolean {

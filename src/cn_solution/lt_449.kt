@@ -2,7 +2,7 @@ package cn_solution
 
 import base.TreeNode
 
-class Codec() {
+class Codec_449() {
     // Encodes a URL to a shortened URL.
     fun serialize(root: TreeNode?): String {
         val builder = StringBuilder()
