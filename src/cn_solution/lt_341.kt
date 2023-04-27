@@ -5,7 +5,7 @@ import java.util.*
 
 class NestedIterator(nestedList: List<NestedInteger>) {
 
-    private class Node(val list: List<NestedInteger>, var index: Int) {
+    class Node(val list: List<NestedInteger>, var index: Int) {
         val curNestedInteger = list[index]
     }
 

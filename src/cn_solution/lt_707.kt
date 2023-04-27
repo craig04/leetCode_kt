@@ -2,7 +2,7 @@ package cn_solution
 
 class MyLinkedList() {
 
-    private class Node(val n: Int, var next: Node? = null, var prev: Node? = null)
+    class Node(val n: Int, var next: Node? = null, var prev: Node? = null)
 
     private val head = Node(0)
     private val tail = Node(0)

@@ -2,7 +2,7 @@ package cn_solution
 
 class AuthenticationManager(private val timeToLive: Int) {
 
-    private class Node(
+    class Node(
         val token: String,
         var expireTime: Int,
         var prev: Node? = null,

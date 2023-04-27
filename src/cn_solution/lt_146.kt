@@ -2,7 +2,7 @@ package cn_solution
 
 class LRUCache(private val capacity: Int) {
 
-    private class Node(val key: Int, var value: Int) {
+    class Node(val key: Int, var value: Int) {
 
         var prev: Node? = null
         var next: Node? = null

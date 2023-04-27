@@ -2,7 +2,7 @@ package cn_solution
 
 class MapSum() {
 
-    private class Node {
+    class Node {
         var sum = 0
         var self = 0
         var next = Array<Node?>(26) { null }
