@@ -1,5 +1,6 @@
 package base
 
-class Node(var `val`: Int) {
+class Node(@JvmField var `val`: Int) {
+    @JvmField
     var children: List<Node?> = listOf()
 }

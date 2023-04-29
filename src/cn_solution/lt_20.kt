@@ -1,6 +1,6 @@
 package cn_solution
 
-fun isValid(s: String): Boolean {
+private fun isValid(s: String): Boolean {
     val stack = CharArray(s.length)
     var p = 1
     for (c in s) {

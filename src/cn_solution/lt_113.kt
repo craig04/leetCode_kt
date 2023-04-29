@@ -2,7 +2,7 @@ package cn_solution
 
 import base.TreeNode
 
-fun pathSum(root: TreeNode?, targetSum: Int): List<List<Int>> {
+private fun pathSum(root: TreeNode?, targetSum: Int): List<List<Int>> {
     var sum = 0
     val list = ArrayList<Int>()
     val result = ArrayList<List<Int>>()

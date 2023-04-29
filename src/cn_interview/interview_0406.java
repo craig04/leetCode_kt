@@ -2,7 +2,7 @@ package cn_interview;
 
 import base.TreeNode;
 
-class Solution {
+class Solution_0406 {
 
     private TreeNode last = null;
     private TreeNode result = null;

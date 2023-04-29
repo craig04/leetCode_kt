@@ -1,6 +1,6 @@
 package cn_solution
 
-fun maxProduct(nums: IntArray): Int {
+private fun maxProduct(nums: IntArray): Int {
     var a = maxOf(nums[0], nums[1])
     var b = nums[0] + nums[1] - a
     for (i in 2 until nums.size) {
