@@ -1,4 +1,4 @@
-package cn_offer
+package cn_solution
 
 fun isOneBitCharacter(bits: IntArray): Boolean {
     var i = 0

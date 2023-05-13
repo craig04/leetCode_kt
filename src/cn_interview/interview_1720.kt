@@ -1,9 +1,11 @@
-package cn_solution
+package cn_interview
 
 import java.util.*
 
 @Suppress("DuplicatedCode")
 class MedianFinder() {
+
+    /** initialize your data structure here. */
 
     private var idx = 0L
     private val set = TreeSet<Long>()

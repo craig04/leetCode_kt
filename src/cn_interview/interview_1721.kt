@@ -1,4 +1,4 @@
-package cn_offer
+package cn_interview
 
 fun trap(height: IntArray): Int {
     val highest = height.indices.maxByOrNull { height[it] } ?: return 0

@@ -1,4 +1,4 @@
-package cn_offer
+package cn_interview
 
 fun maximum(a: Int, b: Int): Int {
     val k = ((a.toLong() - b) shr 32 and 1).toInt()
