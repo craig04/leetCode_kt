@@ -15,12 +15,12 @@ fun deleteNode(root: TreeNode?, key: Int): TreeNode? {
             left == null -> right
             right == null -> left
             else -> {
-                var succ = right
+                var succ: TreeNode = left
                 do {
                     val temp = succ.right ?: break
                     succ = temp
                 } while (true)
-                root.left = deleteNode(root.right, succ.`val`)
+                root.left = deleteNode(root.left, succ.`val`)
                 succ.left = root.left
                 succ.right = root.right
                 succ

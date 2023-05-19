@@ -7,9 +7,10 @@ fun flatten(root: TreeNode?): Unit {
     while (curr != null) {
         val left = curr.left
         if (left != null) {
-            var temp = left
-            while (temp.right != null)
-                temp = temp.right
+            var temp: TreeNode = left
+            while (true) {
+                temp = temp.right ?: break
+            }
             temp.right = curr.right
             curr.right = left
             curr.left = null

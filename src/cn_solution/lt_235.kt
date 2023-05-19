@@ -7,9 +7,9 @@ private fun lowestCommonAncestor(root: TreeNode?, p: TreeNode?, q: TreeNode?): T
     var temp: TreeNode = root
     while (true) {
         temp = if (p.`val` > temp.`val` && q.`val` > temp.`val`)
-            temp.right
+            temp.right ?: break
         else if (p.`val` < temp.`val` && q.`val` < temp.`val`)
-            temp.left
+            temp.left ?: break
         else
             break
     }

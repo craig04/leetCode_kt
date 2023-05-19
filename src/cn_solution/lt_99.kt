@@ -19,13 +19,18 @@ fun recoverTree_morrisTraverse(root: TreeNode?): Unit {
         pre = cur
     }
     while (cur != null) {
-        var temp = cur.left
-        if (temp == null) {
+        val left = cur.left
+        if (left == null) {
             visit(cur)
             cur = cur.right
         } else {
-            while (temp.right != null && temp.right != cur) {
-                temp = temp.right
+            var temp: TreeNode = left
+            while (true) {
+                val right = temp.right
+                if (right != null && right != cur)
+                    temp = right
+                else
+                    break
             }
             if (temp.right == null) {
                 temp.right = cur
