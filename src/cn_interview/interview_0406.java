@@ -4,23 +4,24 @@ import base.TreeNode;
 
 class Solution_0406 {
 
-    private TreeNode last = null;
-    private TreeNode result = null;
-    private TreeNode target = null;
-
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
-        target = p;
-        traverse(root);
-        return result;
-    }
-
-    private void traverse(TreeNode root) {
-        if (root == null)
-            return;
-        traverse(root.left);
-        if (last == target)
-            result = root;
-        last = root;
-        traverse(root.right);
+        TreeNode succ = null;
+        if (p.right != null) {
+            succ = p.right;
+            while (succ.left != null) {
+                succ = succ.left;
+            }
+            return succ;
+        }
+        TreeNode temp = root;
+        while (temp != null) {
+            if (temp.val > p.val) {
+                succ = temp;
+                temp = temp.left;
+            } else {
+                temp = temp.right;
+            }
+        }
+        return succ;
     }
 }
