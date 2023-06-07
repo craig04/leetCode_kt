@@ -1,6 +1,6 @@
 package cn_interview
 
-fun permutation(S: String): Array<String> {
+private fun permutation(S: String): Array<String> {
     val c = S.toCharArray()
     fun swap(i: Int, j: Int) {
         val temp = c[i]
