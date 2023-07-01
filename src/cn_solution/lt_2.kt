@@ -2,7 +2,7 @@ package cn_solution
 
 import base.ListNode
 
-fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {
+private fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {
     val dummy = ListNode(0)
     var tail = dummy
     var c = 0
