@@ -1,6 +1,6 @@
 package cn_solution
 
-fun reverseWords(s: String): String {
+private fun reverseWords(s: String): String {
     val result = StringBuilder()
     var i = -1
     while (i != s.length) {
