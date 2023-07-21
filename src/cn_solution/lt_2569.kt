@@ -19,14 +19,14 @@ fun handleQuery(nums1: IntArray, nums2: IntArray, queries: Array<IntArray>): Lon
     return LongArray(result.size) { result[it] }
 }
 
-class Node(
-    var left: Int = 0,
-    var right: Int = 0,
-    var count: Int = 0,
-    var lazy: Boolean = false
-)
-
 class Tree(nums: IntArray) {
+
+    private class Node(
+        var left: Int = 0,
+        var right: Int = 0,
+        var count: Int = 0,
+        var lazy: Boolean = false
+    )
 
     private val nodes = Array(nums.size * 4) { Node() }
 

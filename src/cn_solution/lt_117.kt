@@ -9,20 +9,19 @@ class Solution_117 {
     }
 
     fun connect(root: Node?): Node? {
-        root ?: return null
         val q = ArrayDeque<Node>()
-        var layer = 1
-        var new = false
-        var last = Node(0)
-        q.add(root)
+        val dummy = Node(0)
+        fun Node?.enqueue() = this?.also { q.add(it) }
+        root.enqueue()
         while (q.isNotEmpty()) {
-            val node = q.removeFirst()
-            if (!new) last.next = node
-            node.left?.let { q.addLast(it) }
-            node.right?.let { q.addLast(it) }
-            new = --layer == 0
-            if (new) layer = q.size
-            last = node
+            var last = dummy
+            repeat(q.size) {
+                val node = q.removeFirst()
+                last.next = node
+                last = node
+                node.left.enqueue()
+                node.right.enqueue()
+            }
         }
         return root
     }

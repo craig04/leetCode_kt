@@ -1,8 +1,7 @@
 package cn_solution
 
 fun longestCommonPrefix(strs: Array<String>): String {
-    val result = strs[0].indices.firstOrNull { i ->
-        strs.any { it.length <= i || it[i] != strs[0][i] }
-    } ?: strs[0].length
-    return strs[0].substring(0, result)
+    return strs[0].substring(0, (0..200).first { len ->
+        strs.any { it.length <= len || it[len] != strs[0][len] }
+    })
 }
