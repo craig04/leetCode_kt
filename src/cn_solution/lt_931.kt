@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minFallingPathSum(matrix: Array<IntArray>): Int {
+private fun minFallingPathSum(matrix: Array<IntArray>): Int {
     val n = matrix.size
     if (n == 1)
         return matrix[0][0]

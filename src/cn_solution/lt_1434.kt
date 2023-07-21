@@ -1,6 +1,6 @@
 package cn_solution
 
-const val MOD = 1e9.toInt() + 7
+private const val MOD = 1e9.toInt() + 7
 
 fun numberWays(hats: List<List<Int>>): Int {
     val map = HashMap<Int, ArrayList<Int>>()

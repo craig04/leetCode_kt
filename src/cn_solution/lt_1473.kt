@@ -1,6 +1,6 @@
 package cn_solution
 
-const val INF = Int.MAX_VALUE
+private const val INF = Int.MAX_VALUE
 
 fun minCost(houses: IntArray, cost: Array<IntArray>, m: Int, n: Int, target: Int): Int {
     var pre = Array(target + 1) { IntArray(n) { INF } }
