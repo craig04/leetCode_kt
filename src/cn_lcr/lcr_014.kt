@@ -1,4 +1,4 @@
-package cn_solution
+package cn_lcr
 
 fun checkInclusion(s1: String, s2: String): Boolean {
     if (s1.length > s2.length)
