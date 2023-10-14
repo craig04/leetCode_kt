@@ -1,4 +1,4 @@
-package cn_solution
+package cn_lcr
 
 fun minimumTotal(triangle: List<List<Int>>): Int {
     val dp = IntArray(triangle.size + 1) { Int.MAX_VALUE }

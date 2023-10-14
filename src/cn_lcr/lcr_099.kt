@@ -1,4 +1,4 @@
-package cn_solution
+package cn_lcr
 
 fun minPathSum(grid: Array<IntArray>): Int {
     val temp = IntArray(grid[0].size + 1) { Int.MAX_VALUE }
