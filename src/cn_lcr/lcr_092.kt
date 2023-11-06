@@ -1,4 +1,4 @@
-package cn_solution
+package cn_lcr
 
 fun minFlipsMonoIncr(s: String): Int {
     var dp1 = 0
