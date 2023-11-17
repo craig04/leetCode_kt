@@ -15,5 +15,5 @@ fun furthestBuilding(heights: IntArray, bricks: Int, ladders: Int): Int {
             brickUsed += pq.poll()
         }
         brickUsed > bricks
-    } ?: heights.size - 1
+    } ?: (heights.size - 1)
 }

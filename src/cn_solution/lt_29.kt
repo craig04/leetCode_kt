@@ -1,14 +1,14 @@
 package cn_solution
 
-fun divide(a: Int, b: Int): Int {
-    if (a == 0)
+fun divide(dividend: Int, divisor: Int): Int {
+    if (dividend == 0)
         return 0
-    if (b == Int.MIN_VALUE)
-        return if (a == b) 1 else 0
-    if (a == Int.MIN_VALUE) {
-        if (b == 1)
+    if (divisor == Int.MIN_VALUE)
+        return if (dividend == divisor) 1 else 0
+    if (dividend == Int.MIN_VALUE) {
+        if (divisor == 1)
             return Int.MIN_VALUE
-        else if (b == -1)
+        else if (divisor == -1)
             return Int.MAX_VALUE
     }
 
@@ -24,9 +24,9 @@ fun divide(a: Int, b: Int): Int {
         return time + calculate(a - base, b)
     }
 
-    val c = if (a < 0) a else -a
-    val d = if (b < 0) b else -b
-    val rev = (a < 0) xor (b < 0)
+    val c = if (dividend < 0) dividend else -dividend
+    val d = if (divisor < 0) divisor else -divisor
+    val rev = (dividend < 0) xor (divisor < 0)
     val result = calculate(c, d)
     return if (rev) -result else result
 }
