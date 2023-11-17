@@ -5,7 +5,7 @@ fun lengthOfLongestSubstring(s: String): Int {
     var begin = -1
     var result = 0
     for (i in s.indices) {
-        val idx = s[i].toInt()
+        val idx = s[i].code
         begin = begin.coerceAtLeast(map[idx])
         result = result.coerceAtLeast(i - begin)
         map[idx] = i

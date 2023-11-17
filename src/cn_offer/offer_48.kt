@@ -5,7 +5,7 @@ private fun lengthOfLongestSubstring(s: String): Int {
     var start = 0
     val end = Array(128) { -1 }
     s.toCharArray().forEachIndexed { i, c ->
-        val ci = c.toInt()
+        val ci = c.code
         start = maxOf(start, end[ci])
         end[ci] = i
         result = maxOf(result, i - start)

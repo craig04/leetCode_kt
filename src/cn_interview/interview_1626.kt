@@ -4,7 +4,7 @@ import java.util.Stack
 
 @Suppress("DEPRECATION")
 fun calculate(s: String): Int {
-    fun Char.priority() = toInt().rem(5).rem(3)
+    fun Char.priority() = code.rem(5).rem(3)
     fun Char.calculate(a: Int, b: Int) = when (this) {
         '+' -> a + b
         '-' -> a - b
