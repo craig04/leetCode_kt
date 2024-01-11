@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minMalwareSpread(graph: Array<IntArray>, initial: IntArray): Int {
+private fun minMalwareSpread(graph: Array<IntArray>, initial: IntArray): Int {
     val n = graph.size
     val slice = IntArray(n)
     var index = 0
