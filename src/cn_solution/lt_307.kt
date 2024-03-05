@@ -1,6 +1,6 @@
 package cn_solution
 
-class NumArray(val nums: IntArray) {
+class NumArray_307(val nums: IntArray) {
 
     class Node(
         var l: Int = 0,
