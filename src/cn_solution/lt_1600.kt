@@ -1,34 +1,27 @@
 package cn_solution
 
-class ThroneInheritance(kingName: String) {
+class ThroneInheritance(private val kingName: String) {
 
-    class Person(val name: String) {
-        var dead = false
-        val children = ArrayList<Person>()
-    }
-
-    private val king = Person(kingName)
-    private val map = hashMapOf(kingName to king)
+    private val children = HashMap<String, ArrayList<String>>()
+    private val dead = HashSet<String>()
 
     fun birth(parentName: String, childName: String) {
-        val person = Person(childName)
-        map[childName] = person
-        map[parentName]?.children?.add(person)
+        children.computeIfAbsent(parentName) { ArrayList() }.add(childName)
     }
 
     fun death(name: String) {
-        map[name]?.dead = true
+        dead.add(name)
     }
 
     fun getInheritanceOrder(): List<String> {
         val result = ArrayList<String>()
-        fun build(person: Person) {
-            if (!person.dead) {
-                result.add(person.name)
-            }
-            person.children.forEach { build(it) }
+        fun dfs(cur: String) {
+            if (cur !in dead)
+                result.add(cur)
+            children[cur]?.forEach { dfs(it) }
         }
-        build(king)
+        dfs(kingName)
         return result
     }
+
 }
