@@ -1,37 +1,25 @@
 package cn_solution
 
 private fun minMalwareSpread(graph: Array<IntArray>, initial: IntArray): Int {
-    val n = graph.size
-    val init = BooleanArray(n)
-    initial.forEach { init[it] = true }
-    var remove = -1
-    val visit = BooleanArray(n)
-    var count = 0
-    var infect = false
-    fun dfs(u: Int) {
-        visit[u] = true
-        count++
-        infect = infect or init[u]
-        for (v in 0 until n)
-            if (v != remove && !visit[v] && graph[u][v] == 1)
-                dfs(v)
-    }
-
-    fun traversal(r: Int): Int {
-        var infection = 0
-        remove = r
+    val visit = BooleanArray(graph.size)
+    val q = ArrayDeque<Int>()
+    fun calculate(remove: Int): Int {
         visit.fill(false)
-        for (i in 0 until n) {
-            if (i != r && !visit[i]) {
-                count = 0
-                infect = false
-                dfs(i)
-                if (infect) {
-                    infection += count
-                }
+        for (i in initial)
+            if (i != remove) {
+                visit[i] = true
+                q.addLast(i)
             }
+        while (q.isNotEmpty()) {
+            val u = q.removeFirst()
+            for (v in graph[u].indices)
+                if (v != remove && graph[u][v] == 1 && !visit[v]) {
+                    visit[v] = true
+                    q.addLast(v)
+                }
         }
-        return infection
+        return visit.count { it }
     }
-    return (0 until n).asSequence().filter { init[it] }.minBy { traversal(it) }
+    initial.sort()
+    return initial.minBy { calculate(it) }
 }

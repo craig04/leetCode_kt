@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minCost(nums: IntArray, x: Int): Long {
+private fun minCost(nums: IntArray, x: Int): Long {
     val n = nums.size
     val dp = nums.copyOf()
     return nums.indices.minOf { k ->

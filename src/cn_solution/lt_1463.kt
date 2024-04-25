@@ -2,7 +2,7 @@ package cn_solution
 
 import kotlin.math.sign
 
-fun cherryPickup(grid: Array<IntArray>): Int {
+private fun cherryPickup(grid: Array<IntArray>): Int {
     val m = grid[0].size
     val cols = 0 until m
     var pre = Array(m) { IntArray(m) { -1 } }
