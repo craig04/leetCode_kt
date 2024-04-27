@@ -1,6 +1,6 @@
 package cn_solution
 
-fun maxScore(cardPoints: IntArray, k: Int): Int {
+private fun maxScore(cardPoints: IntArray, k: Int): Int {
     val left = IntArray(k + 1)
     val right = IntArray(k + 1)
     for (i in 0 until k) {
