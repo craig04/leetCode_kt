@@ -11,7 +11,6 @@ fun minimumValueSum(nums: IntArray, andValues: IntArray): Int {
         var key = curr.toLong() and mask
         key = key or i.toLong().shl(36)
         key = key or j.toLong().shl(32)
-        println()
         return map.getOrPut(key) {
             var result = Int.MAX_VALUE shr 1
             val next = curr and nums[i]

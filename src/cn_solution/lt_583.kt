@@ -39,6 +39,5 @@ fun minDistance_traditional(word1: String, word2: String): Int {
                 dp[i][j] = minOf(dp[i - 1][j], dp[i][j - 1]) + 1
             }
         }
-    println(dp.map { it.asList() })
     return dp[n][m]
 }

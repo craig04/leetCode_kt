@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minimumTime(n: Int, relations: Array<IntArray>, time: IntArray): Int {
+private fun minimumTime(n: Int, relations: Array<IntArray>, time: IntArray): Int {
     val end = IntArray(n)
     val prev = Array(n) { ArrayList<Int>() }
     relations.forEach { prev[it[1] - 1].add(it[0] - 1) }

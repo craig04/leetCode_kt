@@ -2,7 +2,7 @@ package cn_solution
 
 import kotlin.math.abs
 
-fun minCost(nums: IntArray, cost: IntArray): Long {
+private fun minCost(nums: IntArray, cost: IntArray): Long {
     val idx = Array(nums.size) { it }
     idx.sortBy { nums[it] }
     val target = (cost.fold(0L) { sum, c -> sum + c } + 1) / 2

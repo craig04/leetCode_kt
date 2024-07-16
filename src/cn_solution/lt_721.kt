@@ -1,53 +1,33 @@
 package cn_solution
 
 fun accountsMerge(accounts: List<List<String>>): List<List<String>> {
-    val mails = ArrayList<String>()
-    val mailToId = HashMap<String, Int>()
-    val idToName = HashMap<Int, String>()
-    accounts.forEach {
-        val name = it[0]
-        for (i in 1 until it.size) {
-            val mail = it[i]
-            if (mail !in mailToId) {
-                val id = mails.size
-                mails.add(mail)
-                mailToId[mail] = id
-                idToName[id] = name
-            }
-        }
-    }
-    val uf = UnionFind(mails.size)
-    accounts.forEach {
-        val first = mailToId[it[1]]!!
-        for (i in 2 until it.size) {
-            uf.union(first, mailToId[it[i]]!!)
-        }
-    }
-    val map = HashMap<Int, ArrayList<String>>()
-    for (i in 0 until mails.size) {
-        map.computeIfAbsent(uf.find(i)) { ArrayList() }.add(mails[i])
-    }
-    return map.map {
-        ArrayList<String>().apply {
-            add(idToName[it.key]!!)
-            it.value.sort()
-            addAll(it.value)
-        }
-    }
-}
-
-private class UnionFind(n: Int) {
-
-    val fa = IntArray(n) { it }
-
-    fun union(p: Int, q: Int) {
-        fa[find(p)] = find(q)
+    val p = IntArray(10000) { it }
+    fun find(x: Int): Int {
+        if (p[x] != x)
+            p[x] = find(p[x])
+        return p[x]
     }
 
-    fun find(n: Int): Int {
-        if (fa[n] != n) {
-            fa[n] = find(fa[n])
+    fun union(x: Int, y: Int) {
+        val u = find(x)
+        val v = find(y)
+        p[maxOf(u, v)] = minOf(u, v)
+    }
+
+    var idx = accounts.size
+    val emails = HashMap<String, Int>()
+    for (i in accounts.indices) {
+        for (j in 1 until accounts[i].size) {
+            val t = emails.computeIfAbsent(accounts[i][j]) { idx++ }
+            union(i, t)
         }
-        return fa[n]
+    }
+    val ans = HashMap<Int, ArrayList<String>>()
+    for ((email, index) in emails)
+        ans.computeIfAbsent(find(index)) { ArrayList() }.add(email)
+    return ans.map { (index, emails) ->
+        emails.sortDescending()
+        emails.add(accounts[index][0])
+        emails.asReversed()
     }
 }
