@@ -2,14 +2,15 @@ package cn_solution
 
 import java.util.*
 
-fun calPoints(ops: Array<String>): Int {
-    val s = Stack<Int>()
-    return ops.sumBy { op ->
+fun calPoints(operations: Array<String>): Int {
+    val s = ArrayList<Int>()
+    for (op in operations) {
         when (op) {
-            "C" -> -s.pop()
-            "D" -> (s.peek() * 2).also { s.push(it) }
-            "+" -> (s.peek() + s[s.size - 2]).also { s.push(it) }
-            else -> op.toInt().also { s.push(it) }
+            "+" -> s.add(s.last() + s[s.lastIndex - 1])
+            "D" -> s.add(s.last() * 2)
+            "C" -> s.removeLast()
+            else -> s.add(op.toInt())
         }
     }
+    return s.sum()
 }
