@@ -2,6 +2,14 @@ package base
 
 import java.util.*
 
+fun matrix(a: IntArray, n: Int): Array<IntArray> {
+    val m = a.size / n
+    val res = Array(n) { IntArray(m) }
+    for (t in a.indices)
+        res[t / m][t % m] = a[t]
+    return res
+}
+
 fun printList(head: ListNode?) {
     var node = head
     while (node != null) {
