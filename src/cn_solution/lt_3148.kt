@@ -1,6 +1,6 @@
 package cn_solution
 
-fun maxScore(grid: List<List<Int>>): Int {
+private fun maxScore(grid: List<List<Int>>): Int {
     val dp = IntArray(grid.first().size + 1) { Int.MIN_VALUE / 2 }
     var ans = Int.MIN_VALUE
     for (i in grid.indices.reversed()) {

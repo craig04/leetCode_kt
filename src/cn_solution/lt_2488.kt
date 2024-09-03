@@ -2,7 +2,7 @@ package cn_solution
 
 import kotlin.math.sign
 
-fun countSubarrays(nums: IntArray, k: Int): Int {
+private fun countSubarrays(nums: IntArray, k: Int): Int {
     val n = nums.size
     val index = nums.indexOf(k)
     val map = IntArray(n * 2 + 1)

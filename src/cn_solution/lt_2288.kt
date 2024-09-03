@@ -1,9 +1,9 @@
 package cn_solution
 
-const val INIT = 0
-const val DOLLAR = 1
-const val PRICE = 2
-const val OTHER = 3
+private const val INIT = 0
+private const val DOLLAR = 1
+private const val PRICE = 2
+private const val OTHER = 3
 
 fun discountPrices(sentence: String, discount: Int): String {
     val sb = StringBuilder()
