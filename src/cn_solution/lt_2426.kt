@@ -1,6 +1,6 @@
 package cn_solution
 
-fun numberOfPairs(nums1: IntArray, nums2: IntArray, diff: Int): Long {
+private fun numberOfPairs(nums1: IntArray, nums2: IntArray, diff: Int): Long {
     val upper = 50002
     val offset = 20001
     val a = IntArray(upper)
