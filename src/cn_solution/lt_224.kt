@@ -2,7 +2,7 @@ package cn_solution
 
 import java.util.*
 
-fun calculate(s: String): Int {
+private fun calculate(s: String): Int {
     var result = 0
     var num = 0
     var sign = 1
