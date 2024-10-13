@@ -1,6 +1,6 @@
 package cn_solution
 
-fun maxScore(nums: IntArray): Int {
+private fun maxScore(nums: IntArray): Int {
     val n = nums.size
     val dp = hashMapOf(0 to 0)
     fun gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)

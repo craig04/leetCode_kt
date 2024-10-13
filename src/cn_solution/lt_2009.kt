@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minOperations(nums: IntArray): Int {
+private fun minOperations(nums: IntArray): Int {
     val unique = nums.toHashSet().toIntArray()
     unique.sort()
     var i = 0
