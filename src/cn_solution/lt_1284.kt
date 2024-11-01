@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minFlips(mat: Array<IntArray>): Int {
+private fun minFlips(mat: Array<IntArray>): Int {
     val n = mat.size
     val m = mat[0].size
     val bits = n * m

@@ -1,19 +1,16 @@
 package cn_solution
 
-import kotlin.math.floor
+import kotlin.math.sign
 import kotlin.math.sqrt
 
 fun judgeSquareSum(c: Int): Boolean {
-    val r = floor(sqrt(c.toDouble())).toInt()
-    var low = 0
-    var high = r
-    while (low <= high) {
-        val a = c - high * high
-        val b = low * low
-        when {
-            a > b -> low++
-            a < b -> high--
-            else -> return true
+    var a = 0
+    var b = sqrt(c.toDouble()).toInt()
+    while (a <= b) {
+        when ((c - a * a - b * b).sign) {
+            0 -> return true
+            1 -> a++
+            else -> b--
         }
     }
     return false
