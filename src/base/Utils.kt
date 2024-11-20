@@ -2,12 +2,10 @@ package base
 
 import java.util.*
 
-fun matrix(a: IntArray, n: Int): Array<IntArray> {
-    val m = a.size / n
-    val res = Array(n) { IntArray(m) }
-    for (t in a.indices)
-        res[t / m][t % m] = a[t]
-    return res
+fun IntArray.matrix(): Array<IntArray> {
+    val row = last()
+    val col = lastIndex / row
+    return Array(row) { i -> IntArray(col) { j -> this[i * col + j] } }
 }
 
 fun printList(head: ListNode?) {
