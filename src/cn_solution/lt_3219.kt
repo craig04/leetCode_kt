@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minimumCost(m: Int, n: Int, horizontalCut: IntArray, verticalCut: IntArray): Long {
+private fun minimumCost(m: Int, n: Int, horizontalCut: IntArray, verticalCut: IntArray): Long {
     horizontalCut.sort()
     verticalCut.sort()
     var i = horizontalCut.lastIndex

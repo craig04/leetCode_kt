@@ -2,6 +2,40 @@ package cn_solution
 
 import kotlin.math.absoluteValue
 
+import java.util.*
+import kotlin.math.abs
+
+fun minimumEffortPath_dijkstra(heights: Array<IntArray>): Int {
+    val d = intArrayOf(-1, 0, 0, -1, 0, 1, 1, 0)
+    val n = heights.size
+    val m = heights[0].size
+    val row = heights.indices
+    val col = heights[0].indices
+    val q = PriorityQueue<IntArray> { a, b -> a[0] - b[0] }
+    val cost = Array(n) { IntArray(m) { Int.MAX_VALUE } }
+    cost[0][0] = 0
+    q.add(intArrayOf(0, 0, 0))
+    while (q.isNotEmpty()) {
+        val (c, x, y) = q.poll()
+        if (c > cost[x][y])
+            continue
+        if (x == n - 1 && y == m - 1)
+            return c
+        for (t in d.indices step 2) {
+            val u = x + d[t]
+            val v = y + d[t + 1]
+            if (u !in row || v !in col)
+                continue
+            val w = maxOf(c, abs(heights[x][y] - heights[u][v]))
+            if (w >= cost[u][v])
+                continue
+            cost[u][v] = w
+            q.add(intArrayOf(w, u, v))
+        }
+    }
+    return -1
+}
+
 fun minimumEffortPath_binarySearch(heights: Array<IntArray>): Int {
     val n = heights.size
     val m = heights[0].size
