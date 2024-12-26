@@ -4,16 +4,26 @@ import java.util.*
 
 class MyCalendar() {
 
-    private val schedule = TreeMap<Int, Int>()
+    val map = TreeMap<Int, Int>()
 
     fun book(start: Int, end: Int): Boolean {
-        val prev = schedule.lowerEntry(start)
+        var s = start
+        var e = end
+        val prev = map.floorEntry(start)
         if (prev != null && prev.value > start)
             return false
-        val next = schedule.ceilingEntry(start)
-        if (next != null && end > next.key)
+        val next = map.ceilingEntry(start)
+        if (next != null && next.key < end)
             return false
-        schedule[start] = end
+        if (prev?.value == start) {
+            s = prev.key
+            map.remove(prev.key)
+        }
+        if (next?.key == end) {
+            e = next.value
+            map.remove(next.key)
+        }
+        map[s] = e
         return true
     }
 

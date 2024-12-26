@@ -4,15 +4,11 @@ import base.ListNode
 import base.TreeNode
 
 fun isSubPath(head: ListNode?, root: TreeNode?): Boolean {
-    fun dfs(head: ListNode?, root: TreeNode?): Boolean {
-        head ?: return true
-        return root != null
-                && head.`val` == root.`val`
-                && (dfs(head.next, root.left)
-                || dfs(head.next, root.right))
+    fun dfs(node: ListNode?, root: TreeNode?): Boolean {
+        node ?: return true
+        root ?: return false
+        return node.`val` == root.`val` && (dfs(node.next, root.left) || dfs(node.next, root.right)) ||
+                node == head && (dfs(node, root.left) || dfs(node, root.right))
     }
-    return root != null
-            && (dfs(head, root)
-            || isSubPath(head, root.left)
-            || isSubPath(head, root.right))
+    return dfs(head, root)
 }
