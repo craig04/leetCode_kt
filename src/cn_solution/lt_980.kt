@@ -48,7 +48,7 @@ fun uniquePathsIII_dfs(grid: Array<IntArray>): Int {
     val n = grid.size - 1
     val m = grid[0].size - 1
     var result = 0
-    var moves = grid.sumBy { line -> line.count { it == 0 } } + 1
+    var moves = grid.sumOf { line -> line.count { it == 0 } } + 1
     fun dfs(x: Int, y: Int) {
         if (grid[x][y] < 0)
             return

@@ -13,5 +13,5 @@ fun numIslands(grid: Array<CharArray>): Int {
         if (j != m) dfs(i, j + 1)
         return true
     }
-    return (0..n).sumBy { i -> (0..m).count { j -> dfs(i, j) } }
+    return (0..n).sumOf { i -> (0..m).count { j -> dfs(i, j) } }
 }

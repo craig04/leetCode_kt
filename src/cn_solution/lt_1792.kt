@@ -14,5 +14,5 @@ fun maxAverageRatio(classes: Array<IntArray>, extraStudents: Int): Double {
     val q = PriorityQueue<Class> { lhs, rhs -> rhs.increase.compareTo(lhs.increase) }
     classes.forEach { (p, t) -> q.add(Class().apply { set(p, t) }) }
     repeat(extraStudents) { q.add(q.poll().apply { set(pass + 1, total + 1) }) }
-    return q.sumByDouble { it.pass.toDouble() / it.total } / q.size
+    return q.sumOf { it.pass.toDouble() / it.total } / q.size
 }

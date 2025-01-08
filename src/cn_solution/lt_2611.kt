@@ -9,5 +9,5 @@ fun miceAndCheese(reward1: IntArray, reward2: IntArray, k: Int): Int {
         result += r
     }
     diff.sort()
-    return (n - 1 downTo n - k).sumBy { diff[it] } + result
+    return (n - 1 downTo n - k).sumOf { diff[it] } + result
 }

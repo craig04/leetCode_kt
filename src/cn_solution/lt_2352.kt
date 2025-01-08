@@ -13,5 +13,5 @@ fun equalPairs(grid: Array<IntArray>): Int {
         row[r] = (row[r] ?: 0) + 1
         col[c] = (col[c] ?: 0) + 1
     }
-    return col.entries.sumBy { (k, v) -> (row[k] ?: 0) * v }
+    return col.entries.sumOf { (k, v) -> (row[k] ?: 0) * v }
 }

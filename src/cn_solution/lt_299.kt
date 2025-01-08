@@ -12,5 +12,5 @@ fun getHint(secret: String, guess: String): String {
         }
         s == g
     }
-    return "${bulls}A${x.indices.sumBy { minOf(x[it], y[it]) }}B"
+    return "${bulls}A${x.indices.sumOf { minOf(x[it], y[it]) }}B"
 }

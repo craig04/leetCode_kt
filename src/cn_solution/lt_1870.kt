@@ -11,7 +11,7 @@ fun minSpeedOnTime(dist: IntArray, hour: Double): Int {
     if (dist.size == ceil) {
         r = maxOf(r, ceil(dist.last() / (hour + 1 - dist.size)).toInt())
     }
-    fun arrive(speed: Double) = (0 until dist.lastIndex).sumByDouble { ceil(dist[it] / speed) } + dist.last() / speed <= hour
+    fun arrive(speed: Double) = (0 until dist.lastIndex).sumOf { ceil(dist[it] / speed) } + dist.last() / speed <= hour
     while (l != r) {
         val m = (l + r) shr 1
         when (arrive(m.toDouble())) {

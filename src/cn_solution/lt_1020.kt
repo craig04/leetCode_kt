@@ -24,5 +24,5 @@ fun numEnclaves(grid: Array<IntArray>): Int {
         dfs(0, it)
         dfs(n - 1, it)
     }
-    return grid.sumBy { line -> line.count { it == 1 } }
+    return grid.sumOf { line -> line.count { it == 1 } }
 }

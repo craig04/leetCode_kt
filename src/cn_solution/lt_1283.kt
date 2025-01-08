@@ -2,7 +2,7 @@ package cn_solution
 
 fun smallestDivisor(nums: IntArray, threshold: Int): Int {
     fun smaller(divisor: Int): Boolean {
-        return nums.sumBy { (it + divisor - 1) / divisor } <= threshold
+        return nums.sumOf { (it + divisor - 1) / divisor } <= threshold
     }
 
     var left = 1

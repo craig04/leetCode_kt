@@ -11,7 +11,7 @@ fun countServers(grid: Array<IntArray>): Int {
                 row[i]++
                 col[j]++
             }
-    return row.indices.sumBy { i ->
+    return row.indices.sumOf { i ->
         col.indices.count { j ->
             grid[i][j] == 1 && (row[i] > 1 || col[j] > 1)
         }

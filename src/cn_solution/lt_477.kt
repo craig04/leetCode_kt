@@ -9,5 +9,5 @@ fun totalHammingDistance(nums: IntArray): Int {
             temp = temp xor Integer.lowestOneBit(temp)
         }
     }
-    return bits.sumBy { it * (nums.size - it) }
+    return bits.sumOf { it * (nums.size - it) }
 }

@@ -3,8 +3,8 @@ package cn_solution
 fun maxSumTwoNoOverlap(nums: IntArray, firstLen: Int, secondLen: Int): Int {
     val n = nums.size
     fun maxSum(firstLen: Int, secondLen: Int): Int {
-        var first = (0 until firstLen).sumBy { nums[it] }
-        var second = (0 until secondLen).sumBy { nums[firstLen + it] }
+        var first = (0 until firstLen).sumOf { nums[it] }
+        var second = (0 until secondLen).sumOf { nums[firstLen + it] }
         var max = first
         var result = first + second
         var i = firstLen

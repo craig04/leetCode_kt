@@ -10,7 +10,7 @@ fun pondSizes(land: Array<IntArray>): IntArray {
         if (land[i][j] != 0)
             return 0
         land[i][j] = Int.MAX_VALUE
-        return x.indices.sumBy {
+        return x.indices.sumOf {
             val p = x[it] + i
             val q = y[it] + j
             if (p !in row || q !in col) 0 else dfs(p, q)

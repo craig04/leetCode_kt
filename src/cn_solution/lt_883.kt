@@ -1,7 +1,7 @@
 package cn_solution
 
 fun projectionArea(grid: Array<IntArray>): Int {
-    return grid.indices.sumBy { i ->
+    return grid.indices.sumOf { i ->
         var back = 0
         var side = 0
         var bottom = 0

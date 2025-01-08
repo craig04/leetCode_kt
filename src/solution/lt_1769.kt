@@ -28,7 +28,7 @@ private fun IntArray.calc(boxes: CharArray, progression: IntProgression) {
  */
 fun minOperations_2(boxes: String): IntArray {
     return IntArray(boxes.length) { i ->
-        boxes.indices.sumBy {
+        boxes.indices.sumOf {
             if (boxes[it] == '1') abs(it - i) else 0
         }
     }

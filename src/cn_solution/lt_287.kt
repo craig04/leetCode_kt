@@ -1,7 +1,7 @@
 package cn_solution
 
 fun findDuplicate(nums: IntArray): Int {
-    return (0 until 32).sumBy { bit ->
+    return (0 until 32).sumOf { bit ->
         val mask = 1 shl bit
         var count = 0
         nums.forEachIndexed { i, n ->

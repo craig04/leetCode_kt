@@ -6,7 +6,7 @@ fun countTriplets(arr: IntArray): Int {
 
     val map = hashMapOf(0 to Data(0, 1))
     var temp = 0
-    return arr.indices.sumBy {
+    return arr.indices.sumOf {
         temp = temp xor arr[it]
         val data = map.getOrPut(temp) { Data(0, 0) }
         data.count++

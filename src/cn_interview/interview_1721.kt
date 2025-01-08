@@ -4,7 +4,7 @@ fun trap(height: IntArray): Int {
     val highest = height.indices.maxByOrNull { height[it] } ?: return 0
     fun calc(progression: IntProgression): Int {
         var temp = 0
-        return progression.sumBy {
+        return progression.sumOf {
             temp = maxOf(temp, height[it])
             temp - height[it]
         }

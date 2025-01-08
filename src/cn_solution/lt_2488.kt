@@ -12,7 +12,7 @@ private fun countSubarrays(nums: IntArray, k: Int): Int {
         map[bigger + n]++
     }
     var smaller = 0
-    return (index until n).sumBy {
+    return (index until n).sumOf {
         smaller += (k - nums[it]).sign
         map[smaller + n] + map[smaller + 1 + n]
     }

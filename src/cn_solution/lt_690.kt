@@ -10,7 +10,7 @@ fun getImportance(employees: List<Employee?>, id: Int): Int {
     val map = employees.associateBy { it?.id }
     fun getImportance(id: Int): Int {
         return map[id]?.run {
-            importance + subordinates.sumBy { getImportance(it) }
+            importance + subordinates.sumOf { getImportance(it) }
         } ?: 0
     }
     return getImportance(id)

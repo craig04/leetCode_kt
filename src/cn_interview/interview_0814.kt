@@ -20,9 +20,9 @@ fun countEval(s: String, result: Int): Int {
     }
     fun dfs(l: Int, r: Int, res: Int): Int {
         if (dp[l][r][res] == inf) {
-            dp[l][r][res] = (l until r).sumBy { i ->
-                val sub = subs[ops[i] + res] ?: return@sumBy 0
-                (sub.indices step 2).sumBy { j ->
+            dp[l][r][res] = (l until r).sumOf { i ->
+                val sub = subs[ops[i] + res] ?: return@sumOf 0
+                (sub.indices step 2).sumOf { j ->
                     dfs(l, i, sub[j]) * dfs(i + 1, r, sub[j + 1])
                 }
             }

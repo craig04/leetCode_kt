@@ -3,7 +3,7 @@ package cn_solution
 fun numSubarrayBoundedMax(nums: IntArray, left: Int, right: Int): Int {
     var last1 = -1
     var last2 = -1
-    return nums.sumBy {
+    return nums.sumOf {
         val n = nums[it]
         if (n > right) {
             last1 = -1

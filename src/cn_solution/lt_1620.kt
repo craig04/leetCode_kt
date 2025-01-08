@@ -16,7 +16,7 @@ fun bestCoordinate(towers: Array<IntArray>, radius: Int): IntArray {
     var q = 0
     for (i in left..right) {
         for (j in bottom..top) {
-            val s = towers.sumBy {
+            val s = towers.sumOf {
                 val x = it[0] - i
                 val y = it[1] - j
                 val d = Math.sqrt((x * x + y * y).toDouble())
