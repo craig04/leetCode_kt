@@ -1,6 +1,6 @@
 package cn_solution
 
-fun resultArray(nums: IntArray): IntArray {
+private fun resultArray(nums: IntArray): IntArray {
     val data = nums.toHashSet().toIntArray()
     data.sort()
     val map = HashMap<Int, Int>()

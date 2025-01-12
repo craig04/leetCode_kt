@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minOperations(nums: IntArray, k: Int): Int {
+private fun minOperations(nums: IntArray, k: Int): Int {
     var min = Int.MAX_VALUE
     val set = HashSet<Int>()
     for (num in nums) {

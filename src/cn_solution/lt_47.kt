@@ -6,20 +6,22 @@ fun permuteUnique(nums: IntArray): List<List<Int>> {
         nums[i] = nums[j]
         nums[j] = tmp
     }
-
-    fun hasNext(): Boolean {
-        var last = nums.lastIndex
-        val i = (last - 1 downTo 0).firstOrNull { nums[it] < nums[it + 1] } ?: return false
-        val j = (last downTo i + 1).firstOrNull { nums[it] > nums[i] } ?: return false
-        swap(i, j)
-        var first = i + 1
-        while (first < last) swap(first++, last--)
-        return true
-    }
     nums.sort()
-    val result = ArrayList<List<Int>>()
-    do {
-        result.add(nums.toList())
-    } while (hasNext())
-    return result
+    val ans = ArrayList<List<Int>>()
+    while (true) {
+        ans.add(nums.toList())
+        var i = nums.lastIndex - 1
+        while (i >= 0 && nums[i] >= nums[i + 1])
+            i--
+        if (i < 0)
+            break
+        var j = nums.lastIndex
+        while (nums[i] >= nums[j])
+            j--
+        swap(i++, j)
+        j = nums.lastIndex
+        while (i < j)
+            swap(i++, j--)
+    }
+    return ans
 }

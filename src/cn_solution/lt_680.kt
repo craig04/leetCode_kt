@@ -1,22 +1,16 @@
 package cn_solution
 
 fun validPalindrome(s: String): Boolean {
-    fun isPalindrome(i: Int, j: Int): Boolean {
+    fun test(i: Int, j: Int, skip: Boolean = false): Boolean {
         var p = i
         var q = j
-        while (p < q)
-            if (s[p++] != s[q--])
-                return false
+        while (p < q) {
+            if (s[p] != s[q])
+                return skip && (test(p + 1, q) || test(p, q - 1))
+            p++
+            q--
+        }
         return true
     }
-
-    var i = 0
-    var j = s.lastIndex
-    while (i < j) {
-        if (s[i] != s[j])
-            break
-        i++
-        j--
-    }
-    return i >= j - 1 || isPalindrome(i, j - 1) || isPalindrome(i + 1, j)
+    return test(0, s.lastIndex, true)
 }

@@ -1,6 +1,6 @@
 package cn_solution
 
-fun maxCoins(nums: IntArray): Int {
+private fun maxCoins(nums: IntArray): Int {
     val n = nums.size
     val a = IntArray(n + 2)
     a[0] = 1

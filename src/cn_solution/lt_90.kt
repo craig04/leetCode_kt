@@ -1,18 +1,18 @@
 package cn_solution
 
 fun subsetsWithDup(nums: IntArray): List<List<Int>> {
-    return ArrayList<List<Int>>().apply {
-        subsets(nums.sortedArray(), 0, ArrayList(), this)
+    val ans = ArrayList<List<Int>>()
+    val cur = ArrayList<Int>()
+    fun dfs(i: Int) {
+        ans.add(ArrayList(cur))
+        for (j in i until nums.size)
+            if (j == i || nums[j] != nums[j - 1]) {
+                cur.add(nums[j])
+                dfs(j + 1)
+                cur.removeLast()
+            }
     }
-}
-
-private fun subsets(nums: IntArray, cur: Int, temp: MutableList<Int>, result: ArrayList<List<Int>>) {
-    result.add(ArrayList(temp))
-    for (i in cur until nums.size) {
-        if (i == cur || nums[i] != nums[i - 1]) {
-            temp.add(nums[i])
-            subsets(nums, i + 1, temp, result)
-            temp.removeAt(temp.lastIndex)
-        }
-    }
+    nums.sort()
+    dfs(0)
+    return ans
 }
