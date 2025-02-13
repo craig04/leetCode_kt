@@ -1,6 +1,6 @@
 package cn_solution
 
-fun maxChunksToSorted(arr: IntArray): Int {
+private fun maxChunksToSorted(arr: IntArray): Int {
     val s = ArrayList<Int>()
     for (a in arr) {
         if (s.isEmpty() || a > s.last()) {

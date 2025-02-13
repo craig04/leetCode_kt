@@ -2,7 +2,7 @@ package cn_solution
 
 import java.util.*
 
-private class Solution(val nums: IntArray) {
+class Solution_384(val nums: IntArray) {
 
     private val n = nums.size
 

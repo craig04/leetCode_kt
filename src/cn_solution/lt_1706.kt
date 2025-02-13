@@ -3,14 +3,11 @@ package cn_solution
 fun findBall(grid: Array<IntArray>): IntArray {
     val col = grid[0].size
     return IntArray(col) {
-        var pos = it
-        for (row in grid) {
-            val temp = pos + row[pos]
-            if (temp == -1 || temp == col || row[pos] != row[temp]) {
+        grid.fold(it) { pre, row ->
+            val cur = pre + row[pre]
+            if (cur !in 0 until col || row[cur] != row[pre])
                 return@IntArray -1
-            }
-            pos = temp
+            cur
         }
-        pos
     }
 }

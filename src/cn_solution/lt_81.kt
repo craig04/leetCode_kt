@@ -1,6 +1,6 @@
 package cn_solution
 
-fun search(nums: IntArray, target: Int): Boolean {
+private fun search(nums: IntArray, target: Int): Boolean {
     var l = 0
     var r = nums.lastIndex
     while (l <= r) {
@@ -11,7 +11,7 @@ fun search(nums: IntArray, target: Int): Boolean {
             l++
             r--
         } else if (nums[l] <= nums[m]) {
-            if (target in nums[l]..nums[m] - 1)
+            if (target in nums[l]..<nums[m])
                 r = m - 1
             else
                 l = m + 1

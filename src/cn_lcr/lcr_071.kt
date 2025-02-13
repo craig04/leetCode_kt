@@ -1,6 +1,6 @@
 package cn_lcr
 
-class Solution(w: IntArray) {
+class Solution_LCR_071(w: IntArray) {
 
     private val percent: DoubleArray
 

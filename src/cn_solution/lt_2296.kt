@@ -13,19 +13,24 @@ class TextEditor() {
     }
 
     fun deleteText(k: Int): Int {
-        return minOf(t1, k).also { t1 -= it }
+        val len = minOf(k, t1)
+        t1 -= len
+        return len
     }
 
     fun cursorLeft(k: Int): String {
-        val len = minOf(k, t1)
-        repeat(len) { s2[t2++] = s1[--t1] }
-        val n = minOf(10, t1)
-        return String(s1, t1 - n, n)
+        for (i in 0 until minOf(t1, k))
+            s2[t2++] = s1[--t1]
+        return export()
     }
 
     fun cursorRight(k: Int): String {
-        val len = minOf(k, t2)
-        repeat(len) { s1[t1++] = s2[--t2] }
+        for (i in 0 until minOf(t2, k))
+            s1[t1++] = s2[--t2]
+        return export()
+    }
+
+    private fun export(): String {
         val n = minOf(10, t1)
         return String(s1, t1 - n, n)
     }

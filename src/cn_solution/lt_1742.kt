@@ -1,7 +1,7 @@
-package solution
+package cn_solution
 
 fun countBalls(lowLimit: Int, highLimit: Int): Int {
-    return (lowLimit..highLimit).groupBy {
+    return (lowLimit..highLimit).groupingBy {
         var sum = 0
         var temp = it
         while (temp != 0) {
@@ -9,5 +9,5 @@ fun countBalls(lowLimit: Int, highLimit: Int): Int {
             temp /= 10
         }
         sum
-    }.values.maxBy { it.size }.size
+    }.eachCount().maxOf { it.value }
 }

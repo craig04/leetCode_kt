@@ -1,14 +1,26 @@
 package cn_solution
 
-fun countSubstrings(s: String): Int {
-    fun count(i: Int, j: Int): Int {
-        var x = i
-        var y = j
-        while (x >= 0 && y < s.length && s[x] == s[y]) {
-            x--
-            y++
-        }
-        return (y - x) shr 1
+private fun countSubstrings(s: String): Int {
+    val n = s.length
+    val c = CharArray(2 * n + 1)
+    for (i in s.indices) {
+        c[2 * i] = '#'
+        c[2 * i + 1] = s[i]
     }
-    return s.indices.sumOf { count(it, it) + count(it, it + 1) }
+    c[0] = '$'
+    c[2 * n] = '@'
+    var l = 0
+    var r = 0
+    val len = IntArray(2 * n + 1)
+    return (1 until 2 * n).sumOf { i ->
+        if (i <= r)
+            len[i] = minOf(r - i, len[l + r - i])
+        while (c[i + len[i]] == c[i - len[i]])
+            len[i]++
+        if (i + len[i] - 1 > r) {
+            l = i - len[i] + 1
+            r = i + len[i] - 1
+        }
+        (len[i] + i.and(1)) / 2
+    }
 }
