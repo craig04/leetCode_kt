@@ -1,6 +1,6 @@
 package cn_solution
 
-fun maxSum(nums: IntArray): Int {
+private fun maxSum(nums: IntArray): Int {
     val max = IntArray(10)
     var result = -1
     for (i in nums.indices) {

@@ -2,10 +2,8 @@ package base
 
 import java.util.*
 
-fun IntArray.matrix(): Array<IntArray> {
-    val row = last()
-    val col = lastIndex / row
-    return Array(row) { i -> IntArray(col) { j -> this[i * col + j] } }
+fun IntArray.matrix(col: Int): Array<IntArray> {
+    return Array(size / col) { i -> IntArray(col) { j -> this[i * col + j] } }
 }
 
 fun printList(head: ListNode?) {

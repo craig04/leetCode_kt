@@ -11,22 +11,25 @@ private fun longestSpecialPath(edges: Array<IntArray>, nums: IntArray): IntArray
     var minCnt = 1
     val preSum = ArrayList<Int>()
     val lastDepth = HashMap<Int, Int>()
-    fun dfs(u: Int, p: Int, sum: Int, old: Int) {
+    fun dfs(u: Int, p: Int, sum: Int, once: Int, twice: Int) {
+        val curDepth = preSum.size
         preSum.add(sum)
-        val dep = lastDepth.put(nums[u], preSum.lastIndex) ?: -1
-        val new = maxOf(old, dep)
-        val len = sum - preSum[new + 1]
-        val cnt = preSum.size - new - 1
+        val color = nums[u]
+        val last = lastDepth.put(color, curDepth) ?: -1
+        val once2 = maxOf(once, last + 1)
+        val twice2 = minOf(once, maxOf(last + 1, twice))
+        val len = preSum[curDepth] - preSum[twice2]
+        val cnt = curDepth - twice2 + 1
         if (len > maxLen || len == maxLen && cnt < minCnt) {
             maxLen = len
             minCnt = cnt
         }
         for ((v, w) in g[u])
             if (v != p)
-                dfs(v, u, sum + w, new)
+                dfs(v, u, sum + w, once2, twice2)
+        lastDepth[color] = last
         preSum.removeLast()
-        lastDepth[nums[u]] = dep
     }
-    dfs(0, -1, 0, -1)
+    dfs(0, -1, 0, 0, 0)
     return intArrayOf(maxLen, minCnt)
 }

@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minZeroArray(nums: IntArray, queries: Array<IntArray>): Int {
+private fun minZeroArray(nums: IntArray, queries: Array<IntArray>): Int {
     var l = 0
     var r = queries.size + 1
     val n = nums.size
