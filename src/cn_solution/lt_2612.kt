@@ -2,7 +2,7 @@ package cn_solution
 
 import java.util.*
 
-class Solution {
+class Solution_2612 {
     fun minReverseOperations(n: Int, p: Int, banned: IntArray, k: Int): IntArray {
         val ans = IntArray(n) { -1 }
         val q = ArrayDeque<Int>()

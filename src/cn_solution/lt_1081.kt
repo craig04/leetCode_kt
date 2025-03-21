@@ -1,17 +1,20 @@
 package cn_solution
 
-private fun smallestSubsequence(s: String): String {
-    val a = ArrayList<Char>()
+fun smallestSubsequence(s: String): String {
+    val sb = StringBuilder()
     val use = BooleanArray(26)
-    val cnt = s.groupingBy { it }.eachCountTo(HashMap())
+    val cnt = IntArray(26)
+    s.forEach { cnt[it - 'a']++ }
     for (c in s) {
-        cnt.merge(c, -1, Int::plus)
+        cnt[c - 'a']--
         if (use[c - 'a'])
             continue
-        while (a.isNotEmpty() && c < a.last() && (cnt[a.last()] ?: 0) != 0)
-            use[a.removeLast() - 'a'] = false
-        a.add(c)
+        while (sb.isNotEmpty() && c < sb.last() && cnt[sb.last() - 'a'] != 0) {
+            use[sb.last() - 'a'] = false
+            sb.deleteAt(sb.lastIndex)
+        }
+        sb.append(c)
         use[c - 'a'] = true
     }
-    return a.fold(StringBuilder()) { sb, c -> sb.append(c) }.toString()
+    return sb.toString()
 }
