@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minimumPairRemoval(nums: IntArray): Int {
+private fun minimumPairRemoval(nums: IntArray): Int {
     var len = nums.size
     while (len > 1) {
         var sum = Int.MAX_VALUE
