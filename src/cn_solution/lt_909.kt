@@ -1,33 +1,31 @@
 package cn_solution
 
-import java.util.*
-
 fun snakesAndLadders(board: Array<IntArray>): Int {
-    val q = LinkedList<Pair<Int, Int>>()
-    val s = HashSet<Int>()
-    val max = board.size * board.size
-    q.offer(0 to 0)
+    val n = board.size
+    val m = board[0].size
+    val destination = n * m
+    val q = ArrayDeque<Int>()
+    val step = IntArray(destination + 1) { Int.MAX_VALUE }
+    q.addLast(1)
+    step[1] = 0
     while (q.isNotEmpty()) {
-        val node = q.poll()
-        val t = node.first
-        val step = node.second
-        if (t + 1 == max) {
-            return step
-        }
+        val x = q.removeFirst()
+        if (x == destination)
+            return step[x]
         for (i in 1..6) {
-            val next = t + i
-            if (next >= max) {
-                continue
+            var y = x + i
+            if (y > destination)
+                break
+            val u = n - 1 - (y - 1) / m
+            var v = (y - 1) % m
+            if ((n - u) % 2 == 0)
+                v = m - 1 - v
+            if (board[u][v] != -1)
+                y = board[u][v]
+            if (step[y] > step[x] + 1) {
+                step[y] = step[x] + 1
+                q.addLast(y)
             }
-            val tr = next / board.size
-            val r = board.size - 1 - tr
-            val tc = next % board.size
-            val c = if (tr and 1 == 0) tc else board.size - 1 - tc
-            val p = if (board[r][c] == -1) next else board[r][c] - 1
-            if (!s.add(p)) {
-                continue
-            }
-            q.offer(p to step + 1)
         }
     }
     return -1

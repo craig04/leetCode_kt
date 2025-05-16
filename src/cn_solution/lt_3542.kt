@@ -2,7 +2,7 @@ package cn_solution
 
 import kotlin.math.sign
 
-fun minOperations(nums: IntArray): Int {
+private fun minOperations(nums: IntArray): Int {
     var ans = 0
     var top = -1
     for (num in nums) {

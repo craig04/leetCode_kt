@@ -1,34 +1,31 @@
 package cn_solution
 
-class TreeAncestor(private val n: Int, private val parent: IntArray) {
+class TreeAncestor(n: Int, parent: IntArray) {
 
-    private val depth = 16
-    private val ancestor = Array(n) { IntArray(depth) { -1 } }
+    val m = 33 - (n - 1).countLeadingZeroBits()
+    val p = Array(n) { IntArray(m) { -1 } }
+
 
     init {
-        parent.forEachIndexed { i, p -> ancestor[i][0] = p }
-        for (j in 1 until depth) {
+        for (i in 0 until n)
+            p[i][0] = parent[i]
+        for (j in 1 until m)
             for (i in 0 until n) {
-                val a = ancestor[i][j - 1]
-                if (a != -1) {
-                    ancestor[i][j] = ancestor[a][j - 1]
-                }
+                val k = p[i][j - 1]
+                if (k != -1)
+                    p[i][j] = p[k][j - 1]
             }
-        }
     }
 
     fun getKthAncestor(node: Int, k: Int): Int {
+        var ans = node
         var t = k
-        var id = node
-        for (i in 0 until depth) {
-            if (t == 0 || id == -1)
+        while (t > 0) {
+            ans = p[ans][t.countTrailingZeroBits()]
+            if (ans == -1)
                 break
-            val bit = 1 shl i
-            if (t and bit != 0) {
-                t = t xor bit
-                id = ancestor[id][i]
-            }
+            t = t and (t - 1)
         }
-        return id
+        return ans
     }
 }

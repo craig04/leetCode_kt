@@ -1,6 +1,6 @@
 package cn_solution
 
-fun countSubarrays(nums: IntArray, k: Int): Long {
+private fun countSubarrays(nums: IntArray, k: Int): Long {
     val max = nums.max()
     var i = 0
     var cnt = 0

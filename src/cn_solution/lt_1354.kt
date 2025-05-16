@@ -2,7 +2,7 @@ package cn_solution
 
 import java.util.*
 
-fun isPossible(target: IntArray): Boolean {
+private fun isPossible(target: IntArray): Boolean {
     if (target.size == 1)
         return target[0] == 1
     var sum = 0L
