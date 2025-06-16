@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minSwaps(nums: IntArray): Int {
+private fun minSwaps(nums: IntArray): Int {
     val n = nums.size
     val sums = IntArray(n) {
         var num = nums[it]

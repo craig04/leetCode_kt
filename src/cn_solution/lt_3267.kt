@@ -1,6 +1,6 @@
 package cn_solution
 
-fun countPairs(nums: IntArray): Int {
+private fun countPairs(nums: IntArray): Int {
     val s = Array(nums.size) {
         var num = nums[it]
         CharArray(7) {

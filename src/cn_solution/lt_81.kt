@@ -11,7 +11,7 @@ private fun search(nums: IntArray, target: Int): Boolean {
             l++
             r--
         } else if (nums[l] <= nums[m]) {
-            if (target in nums[l]..<nums[m])
+            if (target in nums[l]..nums[m])
                 r = m - 1
             else
                 l = m + 1

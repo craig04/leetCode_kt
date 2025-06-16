@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minOperations(nums1: IntArray, nums2: IntArray): Int {
+private fun minOperations(nums1: IntArray, nums2: IntArray): Int {
     val n = nums1.size
     val m = nums2.size
     if (n * 6 < m || m * 6 < n)
