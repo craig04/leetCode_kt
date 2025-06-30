@@ -1,7 +1,11 @@
 package cn_solution
 
 fun kthCharacter(k: Long, operations: IntArray): Char {
-    return 'a' + (0 until minOf(64, operations.size)).count {
-        1L.shl(it).and(k) != 0L && operations[it] == 1
-    } % 26
+    var m = 0
+    var t = k - 1
+    while (t != 0L) {
+        m += operations[t.countTrailingZeroBits()]
+        t = t and t - 1
+    }
+    return 'a' + m % 26
 }

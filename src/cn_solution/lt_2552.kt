@@ -1,6 +1,6 @@
 package cn_solution
 
-fun countQuadruplets(nums: IntArray): Long {
+private fun countQuadruplets(nums: IntArray): Long {
     val n = nums.size
     val pre = IntArray(n + 1)
     var ans = 0L
