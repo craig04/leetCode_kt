@@ -1,12 +1,12 @@
 package cn_solution
 
 fun countMaxOrSubsets(nums: IntArray): Int {
-    val n = nums.size
-    val target = nums.reduce { a, b -> a or b }
-    fun search(t: Int, i: Int): Int = when {
-        t == target -> 1.shl(n - i)
-        i == n -> 0
-        else -> search(t or nums[i], i + 1) + search(t, i + 1)
+    val max = nums.reduce(Int::or)
+    return (1 until 1.shl(nums.size)).count { bit ->
+        var res = 0
+        for (j in nums.indices)
+            if (1.shl(j).and(bit) != 0)
+                res = res or nums[j]
+        res == max
     }
-    return search(0, 0)
 }

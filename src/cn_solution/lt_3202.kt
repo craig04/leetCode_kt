@@ -1,6 +1,6 @@
 package cn_solution
 
-fun maximumLength(nums: IntArray, k: Int): Int {
+private fun maximumLength(nums: IntArray, k: Int): Int {
     val len = Array(k) { IntArray(k) }
     for (num in nums) {
         val y = num % k

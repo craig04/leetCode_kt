@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minSteps(s: String, t: String): Int {
+private fun minSteps(s: String, t: String): Int {
     val a = IntArray(26)
     for (c in s)
         a[c - 'a']++

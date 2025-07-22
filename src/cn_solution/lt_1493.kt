@@ -1,6 +1,6 @@
 package cn_solution
 
-fun longestSubarray(nums: IntArray): Int {
+private fun longestSubarray(nums: IntArray): Int {
     var pre = 0
     var cur = 0
     var result = 0

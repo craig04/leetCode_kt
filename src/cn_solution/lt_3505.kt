@@ -2,7 +2,7 @@ package cn_solution
 
 import java.util.*
 
-fun minOperations(nums: IntArray, x: Int, k: Int): Long {
+private fun minOperations(nums: IntArray, x: Int, k: Int): Long {
     val n = nums.size
     val dp = Array(n + 1) { LongArray(k + 1) { Long.MAX_VALUE / 2 } }
     dp[0][0] = 0

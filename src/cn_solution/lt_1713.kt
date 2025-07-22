@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minOperations(target: IntArray, arr: IntArray): Int {
+private fun minOperations(target: IntArray, arr: IntArray): Int {
     val map = HashMap<Int, Int>()
     for (i in target.indices) {
         map[target[i]] = i

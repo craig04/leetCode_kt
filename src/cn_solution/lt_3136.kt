@@ -1,6 +1,6 @@
 package cn_solution
 
-fun isValid(word: String): Boolean {
+private fun isValid(word: String): Boolean {
     val vowels = "aeiou"
     var letter = 0
     return word.length >= 3 && word.all { c ->
