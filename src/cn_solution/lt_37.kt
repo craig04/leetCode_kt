@@ -17,6 +17,7 @@ fun solveSudoku(board: Array<CharArray>): Unit {
                 blk[k] = b or blk[k]
             }
         }
+    space.sortBy { (i, j, k) -> 9 - row[i].or(col[j]).or(blk[k]).countOneBits() }
     fun dfs(t: Int): Boolean {
         if (t == space.size)
             return true

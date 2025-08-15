@@ -1,6 +1,6 @@
 package cn_solution
 
-fun numberOfSubstrings(s: String): Int {
+private fun numberOfSubstrings(s: String): Int {
     var ans = 0
     var cnt0 = 0
     var cnt1 = 0

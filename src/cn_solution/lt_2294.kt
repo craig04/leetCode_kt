@@ -1,6 +1,6 @@
 package cn_solution
 
-fun partitionArray(nums: IntArray, k: Int): Int {
+private fun partitionArray(nums: IntArray, k: Int): Int {
     nums.sort()
     val n = nums.size
     var i = 0
