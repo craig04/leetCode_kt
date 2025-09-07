@@ -4,47 +4,64 @@ import java.util.*
 
 class MovieRentingSystem(n: Int, entries: Array<IntArray>) {
 
-    private val shops = Array(n) { HashMap<Int, IntArray>() }
-    private val inventory = HashMap<Int, TreeSet<IntArray>>()
-    private val rented = TreeSet<IntArray>(compareBy({ it[2] }, { it[0] }, { it[1] }))
+    class Entry(val shop: Int, val movie: Int, val price: Int)
+
+    private val table = Array(n) { HashMap<Int, Entry>() }
+    private val inventory = HashMap<Int, PriorityQueue<Entry>>()
+    private val rented = PriorityQueue<Entry> { a, b ->
+        when {
+            a.price != b.price -> a.price - b.price
+            a.shop != b.shop -> a.shop - b.shop
+            else -> a.movie - b.movie
+        }
+    }
 
     init {
-        for (e in entries) {
-            shops[e[0]][e[1]] = e
-            inventory.computeIfAbsent(e[1]) { TreeSet(compareBy({ it[2] }, { it[0] })) }.add(e)
+        for ((shop, movie, price) in entries) {
+            val entry = Entry(shop, movie, price)
+            this.table[shop][movie] = entry
+            this.inventory.computeIfAbsent(movie) {
+                PriorityQueue { a, b ->
+                    if (a.price != b.price) a.price - b.price else a.shop - b.shop
+                }
+            }.add(entry)
         }
     }
 
     fun search(movie: Int): List<Int> {
-        val ans = ArrayList<Int>()
-        val entries = inventory[movie] ?: emptySet()
-        for (e in entries) {
-            ans.add(e[0])
-            if (ans.size == 5)
-                break
+        val ans = ArrayList<Entry>()
+        val entries = inventory[movie] ?: return emptyList()
+        while (ans.size < 5 && entries.isNotEmpty()) {
+            val e = entries.poll()
+            if (e == table[e.shop][e.movie])
+                ans.add(e)
         }
-        return ans
+        entries.addAll(ans)
+        return ans.map { it.shop }
     }
 
     fun rent(shop: Int, movie: Int) {
-        val e = shops[shop][movie] ?: return
-        inventory[e[1]]?.remove(e)
-        rented.add(e)
+        val old = table[shop][movie] ?: return
+        val new = Entry(shop, movie, old.price)
+        table[shop][movie] = new
+        rented.add(new)
     }
 
     fun drop(shop: Int, movie: Int) {
-        val e = shops[shop][movie] ?: return
-        inventory[e[1]]?.add(e)
-        rented.remove(e)
+        val old = table[shop][movie] ?: return
+        val new = Entry(shop, movie, old.price)
+        table[shop][movie] = new
+        inventory[movie]?.add(new)
     }
 
     fun report(): List<List<Int>> {
-        val ans = ArrayList<List<Int>>()
-        for (e in rented) {
-            ans.add(listOf(e[0], e[1]))
-            if (ans.size == 5)
-                break
+        val ans = ArrayList<Entry>()
+        while (ans.size < 5 && rented.isNotEmpty()) {
+            val e = rented.poll()
+            if (e == table[e.shop][e.movie])
+                ans.add(e)
         }
-        return ans
+        rented.addAll(ans)
+        return ans.map { listOf(it.shop, it.movie) }
     }
 }

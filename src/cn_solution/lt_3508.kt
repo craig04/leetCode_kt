@@ -1,60 +1,45 @@
 package cn_solution
 
-class Router(private val memoryLimit: Int) {
+class Router(val memoryLimit: Int) {
 
-    private class Destination {
-        val q = ArrayDeque<IntArray>()
-        val set = HashSet<Long>()
-    }
+    data class Packet(val src: Int, val dst: Int, val ts: Int)
 
-    private val empty = IntArray(0)
-    private val q = ArrayDeque<IntArray>()
-    private val map = HashMap<Int, Destination>()
+    private val q = ArrayDeque<Packet>()
+    private val set = HashSet<Packet>()
+    private val map = HashMap<Int, ArrayDeque<Packet>>()
 
     fun addPacket(source: Int, destination: Int, timestamp: Int): Boolean {
-        val key = timestamp * 200001L + source
-        if (map[destination]?.set?.contains(key) == true)
+        val packet = Packet(source, destination, timestamp)
+        if (!set.add(packet))
             return false
         if (q.size == memoryLimit)
             forwardPacket()
-        val packet = intArrayOf(source, destination, timestamp)
         q.addLast(packet)
-        map.computeIfAbsent(destination) { Destination() }.apply {
-            q.addLast(packet)
-            set.add(key)
-        }
+        map.computeIfAbsent(destination) { ArrayDeque() }.addLast(packet)
         return true
     }
 
     fun forwardPacket(): IntArray {
-        if (q.isEmpty())
-            return empty
-        val packet = q.removeFirst()
-        val (src, dst, ts) = packet
-        map[dst]?.apply {
-            q.removeFirst()
-            set.remove(ts * 200001L + src)
-        }
-        return packet
+        val packet = q.removeFirstOrNull() ?: return IntArray(0)
+        map[packet.dst]?.removeFirst()
+        set.remove(packet)
+        return intArrayOf(packet.src, packet.dst, packet.ts)
     }
 
     fun getCount(destination: Int, startTime: Int, endTime: Int): Int {
-        fun ArrayDeque<IntArray>.ceiling(x: Int): Int {
+        val q = map[destination] ?: return 0
+        fun greater(x: Int): Int {
             var l = 0
-            var r = size
+            var r = q.size
             while (l != r) {
-                val m = (l + r) shr 1
-                if (get(m)[2] < x)
-                    l = m + 1
-                else
+                val m = (l + r) / 2
+                if (q[m].ts > x)
                     r = m
+                else
+                    l = m + 1
             }
             return l
         }
-        return map[destination]?.let {
-            val l = it.q.ceiling(startTime)
-            val r = it.q.ceiling(endTime + 1)
-            r - l
-        } ?: 0
+        return greater(endTime) - greater(startTime - 1)
     }
 }

@@ -1,18 +1,14 @@
 package cn_solution
 
-import kotlin.math.abs
-
 fun compareVersion(version1: String, version2: String): Int {
-    fun String.version() = split('.').toMutableList()
+    fun String.version() = split('.').map { it.toInt() }
     val v1 = version1.version()
     val v2 = version2.version()
-    val shorter = if (v1.size < v2.size) v1 else v2
-    repeat(abs(v2.size - v1.size)) { shorter.add("0") }
-    for (i in v1.indices) {
-        val c = v1[i].toInt().compareTo(v2[i].toInt())
-        if (c != 0) {
-            return c
-        }
+    for (i in 0 until maxOf(v1.size, v2.size)) {
+        val a1 = v1.getOrElse(i) { 0 }
+        val a2 = v2.getOrElse(i) { 0 }
+        if (a1 != a2)
+            return a1.compareTo(a2)
     }
     return 0
 }
