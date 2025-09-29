@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minInsertions(s: String): Int {
+private fun minInsertions(s: String): Int {
     val n = s.length
     val dp = Array(n) { IntArray(n) }
     for (i in n - 2 downTo 0)

@@ -1,15 +1,15 @@
 package cn_solution
 
 fun successfulPairs(spells: IntArray, potions: IntArray, success: Long): IntArray {
-    val sp = Array(spells.size) { Pair(spells[it].toLong(), it) }
-    sp.sortBy { it.first }
-    potions.sort()
-    var p = potions.lastIndex
+    val a = Array(spells.size) { intArrayOf(spells[it], it) }
+    a.sortBy { it[0] }
+    potions.sortDescending()
+    var j = 0
     val result = IntArray(spells.size)
-    for (i in sp.indices) {
-        while (p >= 0 && sp[i].first * potions[p] >= success)
-            p--
-        result[sp[i].second] = potions.lastIndex - p
+    for ((spell, i) in a) {
+        while (j < potions.size && 1L * spell * potions[j] >= success)
+            j++
+        result[i] = j
     }
     return result
 }

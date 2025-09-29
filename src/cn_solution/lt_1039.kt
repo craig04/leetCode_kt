@@ -1,24 +1,13 @@
 package cn_solution
 
-fun minScoreTriangulation(values: IntArray): Int {
-    val n = values.size
-    val dp = Array(n) { i ->
-        IntArray(n) { j ->
-            when {
-                i + 2 > j -> 0
-                i + 2 < j -> -1
-                else -> values[i] * values[i + 1] * values[j]
-            }
+fun minScoreTriangulation(v: IntArray): Int {
+    val n = v.size
+    val dp = Array(n) { IntArray(n) }
+    for (i in n - 3 downTo 0)
+        for (j in i + 2 until n) {
+            dp[i][j] = Int.MAX_VALUE
+            for (k in i + 1 until j)
+                dp[i][j] = minOf(dp[i][j], dp[i][k] + dp[k][j] + v[i] * v[j] * v[k])
         }
-    }
-
-    fun search(i: Int, j: Int): Int {
-        if (dp[i][j] == -1) {
-            dp[i][j] = (i + 1 until j).fold(Int.MAX_VALUE) { acc, k ->
-                minOf(acc, values[i] * values[k] * values[j] + search(i, k) + search(k, j))
-            }
-        }
-        return dp[i][j]
-    }
-    return search(0, n - 1)
+    return dp[0][n - 1]
 }
