@@ -3,8 +3,7 @@ package cn_solution
 fun maxPower(stations: IntArray, r: Int, k: Int): Long {
     val n = stations.size
     val d = LongArray(n + 1)
-    for (i in stations.indices) {
-        val p = stations[i].toLong()
+    stations.forEachIndexed { i, p ->
         d[maxOf(0, i - r)] += p
         d[minOf(n, i + r + 1)] -= p
     }

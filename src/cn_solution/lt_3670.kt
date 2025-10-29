@@ -1,6 +1,6 @@
 package cn_solution
 
-fun maxProduct(nums: IntArray): Long {
+private fun maxProduct(nums: IntArray): Long {
     val bits = 32 - nums.max().countLeadingZeroBits()
     val mask = 1.shl(bits) - 1
     val dp = IntArray(mask + 1)

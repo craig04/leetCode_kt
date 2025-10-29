@@ -1,26 +1,25 @@
 package cn_solution
 
-class Bank(private val balance: LongArray) {
+class Bank(val balance: LongArray) {
 
     fun transfer(account1: Int, account2: Int, money: Long): Boolean {
-        if (account1.invalid() || account2.invalid() || balance[account1.index()] < money) return false
-        balance[account1.index()] -= money
-        balance[account2.index()] += money
-        return true
+        if (account2 - 1 !in balance.indices)
+            return false
+        return change(account1, -money) && change(account2, money)
     }
 
     fun deposit(account: Int, money: Long): Boolean {
-        if (account.invalid()) return false
-        balance[account.index()] += money
-        return true
+        return change(account, money)
     }
 
     fun withdraw(account: Int, money: Long): Boolean {
-        if (account.invalid() || balance[account.index()] < money) return false
-        balance[account.index()] -= money
-        return true
+        return change(account, -money)
     }
 
-    private fun Int.invalid() = this !in (1..balance.size)
-    private fun Int.index() = this - 1
+    fun change(account: Int, money: Long): Boolean {
+        if (account - 1 !in balance.indices || balance[account - 1] + money < 0)
+            return false
+        balance[account - 1] += money
+        return true
+    }
 }

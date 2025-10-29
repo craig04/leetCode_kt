@@ -1,6 +1,6 @@
 package cn_solution
 
-fun maximumScore(nums: IntArray, k: Int): Int {
+private fun maximumScore(nums: IntArray, k: Int): Int {
     val n = nums.size
     var i = k - 1
     var j = k + 1

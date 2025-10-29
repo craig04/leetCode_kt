@@ -1,6 +1,6 @@
 package cn_solution
 
-fun maxAlternatingSum(nums: IntArray): Long {
+private fun maxAlternatingSum(nums: IntArray): Long {
     var odd = nums[0].toLong()
     var even = 0L
     for (i in 1 until nums.size) {
