@@ -14,8 +14,8 @@ fun letterCasePermutation(s: String): List<String> {
         } else if (s[i].isDigit()) {
             step(s[i])
         } else {
-            step(s[i].toLowerCase())
-            step(s[i].toUpperCase())
+            step(s[i].lowercaseChar())
+            step(s[i].lowercaseChar())
         }
     }
     dfs(0)

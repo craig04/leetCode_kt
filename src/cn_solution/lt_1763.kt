@@ -25,7 +25,7 @@ fun longestNiceSubstring(s: String): String {
         var start = l
         while (start < r) {
             var end = start
-            while (end != r && 1.shl(ca[end].toLowerCase() - 'a').and(diff) == 0) {
+            while (end != r && 1.shl(ca[end].lowercaseChar() - 'a').and(diff) == 0) {
                 end++
             }
             if (start != end) {

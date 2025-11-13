@@ -1,6 +1,6 @@
 package cn_solution
 
-fun longestSubarray(nums: IntArray): Int {
+private fun longestSubarray(nums: IntArray): Int {
     val n = nums.size
     var i = 2
     var ans = 2

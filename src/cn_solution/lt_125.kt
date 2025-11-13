@@ -8,7 +8,7 @@ fun isPalindrome(s: String): Boolean {
         while (--j > i && !s[j].isLetterOrDigit());
         if (i >= j)
             break
-        if (s[i].toLowerCase() != s[j].toLowerCase())
+        if (s[i].lowercaseChar() != s[j].lowercaseChar())
             return false
     }
     return true

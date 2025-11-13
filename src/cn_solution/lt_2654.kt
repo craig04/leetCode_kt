@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minOperations(nums: IntArray): Int {
+private fun minOperations(nums: IntArray): Int {
     fun gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
     val cnt = nums.count { it == 1 }
     if (cnt != 0)

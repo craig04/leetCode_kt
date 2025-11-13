@@ -15,17 +15,17 @@ class FizzBuzz {
 
     // printFizz.run() outputs "fizz".
     public void fizz(Runnable printFizz) throws InterruptedException {
-        execute(1, (_) -> printFizz.run());
+        execute(1, (x) -> printFizz.run());
     }
 
     // printBuzz.run() outputs "buzz".
     public void buzz(Runnable printBuzz) throws InterruptedException {
-        execute(2, (_) -> printBuzz.run());
+        execute(2, (x) -> printBuzz.run());
     }
 
     // printFizzBuzz.run() outputs "fizzbuzz".
     public void fizzbuzz(Runnable printFizzBuzz) throws InterruptedException {
-        execute(3, (_) -> printFizzBuzz.run());
+        execute(3, (x) -> printFizzBuzz.run());
     }
 
     // printNumber.accept(x) outputs "x", where x is an integer.

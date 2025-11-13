@@ -1,23 +1,29 @@
 package cn_solution
 
 fun goodSubsetofBinaryMatrix(grid: Array<IntArray>): List<Int> {
-    val us = 1.shl(grid[0].size) - 1
-    val pos = IntArray(us) { -1 }
+    val w = grid[0].size
+    val u = 1 shl w
+    val dp = IntArray(u) { -1 }
     for (i in grid.indices) {
-        val row = grid[i]
-        val s = row.indices.sumOf { 1.shl(it) * row[it] }
+        val s = (0 until w).sumOf { j -> grid[i][j] shl j }
         if (s == 0)
             return listOf(i)
-        if (pos[s] != -1)
-            continue
-        val cs = s xor us
-        var t = cs
-        while (t != 0) {
-            if (pos[t] != -1)
-                return listOf(pos[t], i)
-            t = (t - 1) and cs
+        dp[s] = i
+    }
+    for (i in 0 until w) {
+        val t = 1 shl i
+        var j = t
+        while (j < u) {
+            if (dp[j] == -1)
+                dp[j] = dp[j xor t]
+            if (dp[j] != -1 && dp[j xor (u - 1)] != -1) {
+                val x = dp[j]
+                val y = dp[j xor (u - 1)]
+                val min = minOf(x, y)
+                return listOf(min, x xor y xor min)
+            }
+            j = (j + 1) or t
         }
-        pos[s] = i
     }
     return emptyList()
 }

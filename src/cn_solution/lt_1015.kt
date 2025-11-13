@@ -4,15 +4,13 @@ fun smallestRepunitDivByK(k: Int): Int {
     if (k % 2 == 0 || k % 5 == 0)
         return -1
     val set = HashSet<Int>()
-    var remainder = 0
-    var result = 0
-    while (true) {
-        result++
-        remainder = (remainder * 10 + 1) % k
-        if (remainder == 0)
+    var rem = 0
+    while (set.size < k) {
+        rem = (rem * 10 + 1) % k
+        if (rem == 0)
+            return set.size + 1
+        if (!set.add(rem))
             break
-        if (!set.add(remainder))
-            return -1
     }
-    return result
+    return -1
 }

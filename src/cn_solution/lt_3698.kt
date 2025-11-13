@@ -2,7 +2,7 @@ package cn_solution
 
 import kotlin.math.abs
 
-fun splitArray(nums: IntArray): Long {
+private fun splitArray(nums: IntArray): Long {
     val n = nums.size
     var pre = 0L + nums[0]
     var i = 1
