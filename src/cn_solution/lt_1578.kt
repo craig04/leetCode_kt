@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minCost(colors: String, neededTime: IntArray): Int {
+private fun minCost(colors: String, neededTime: IntArray): Int {
     val n = colors.length
     var ans = 0
     var max = 0

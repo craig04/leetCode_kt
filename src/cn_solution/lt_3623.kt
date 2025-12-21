@@ -1,6 +1,6 @@
 package cn_solution
 
-fun countTrapezoids(points: Array<IntArray>): Int {
+private fun countTrapezoids(points: Array<IntArray>): Int {
     val map = points.asSequence().groupingBy { it[1] }.eachCount()
     var mul = 0L
     var ans = 0L

@@ -1,32 +1,28 @@
 package cn_solution
 
 fun maximalRectangle(matrix: Array<CharArray>): Int {
-    val m = if (matrix.isEmpty()) 0 else matrix[0].size
-    if (m == 0)
-        return 0
-    val height = IntArray(m)
-    val left = IntArray(m)
-    var result = 0
-    for (line in matrix) {
-        for (j in line.indices) {
-            if (line[j] == '0')
-                height[j] = 0
-            else
-                height[j]++
-        }
-        val stack = ArrayList<Int>()
-        height.forEachIndexed { i, h ->
-            while (stack.isNotEmpty() && height[stack.last()] >= h) {
-                val j = stack.removeLast()
-                result = maxOf(result, (i - left[j] - 1) * height[j])
+    val m = matrix[0].size
+    val heights = IntArray(m)
+    val l = IntArray(m + 1)
+    val s = IntArray(m + 1)
+    s[0] = -1
+    fun largestRectangleArea(): Int {
+        var ans = 0
+        var top = 0
+        for (j in 0..m) {
+            val h = if (j == m) 0 else heights[j]
+            while (top != 0 && heights[s[top]] >= h) {
+                val i = s[top--]
+                ans = maxOf(ans, (j - l[i] - 1) * heights[i])
             }
-            left[i] = if (stack.isEmpty()) -1 else stack.last()
-            stack.add(i)
+            l[j] = s[top]
+            s[++top] = j
         }
-        while (stack.isNotEmpty()) {
-            val j = stack.removeLast()
-            result = maxOf(result, (m - left[j] - 1) * height[j])
-        }
+        return ans
     }
-    return result
+    return matrix.maxOf {
+        for (j in 0 until m)
+            heights[j] = if (it[j] == '0') 0 else heights[j] + 1
+        largestRectangleArea()
+    }
 }

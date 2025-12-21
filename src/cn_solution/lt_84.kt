@@ -1,23 +1,18 @@
 package cn_solution
 
-import java.util.*
-
 fun largestRectangleArea(heights: IntArray): Int {
-    var result = 0
     val n = heights.size
-    val stack = Stack<Int>()
-    val left = IntArray(n)
-    heights.forEachIndexed { i, h ->
-        while (stack.isNotEmpty() && heights[stack.peek()] >= h) {
-            val t = stack.pop()
-            result = maxOf(result, (i - left[t] - 1) * heights[t])
+    val l = IntArray(n + 1)
+    val s = arrayListOf(-1)
+    var ans = 0
+    for (j in 0..n) {
+        val h = if (j == n) 0 else heights[j]
+        while (s.size > 1 && heights[s.last()] >= h) {
+            val i = s.removeLast()
+            ans = maxOf(ans, (j - l[i] - 1) * heights[i])
         }
-        left[i] = if (stack.isEmpty()) -1 else stack.peek()
-        stack.push(i)
+        l[j] = s.last()
+        s.add(j)
     }
-    while (stack.isNotEmpty()) {
-        val t = stack.pop()
-        result = maxOf(result, (n - left[t] - 1) * heights[t])
-    }
-    return result
+    return ans
 }

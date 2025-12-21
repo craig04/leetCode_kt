@@ -1,15 +1,14 @@
 package cn_solution
 
-private const val MOD = 1000000007
-
 fun numOfWays(n: Int): Int {
+    val modulo = 1000000007
     var a = 6L
     var b = 6L
     repeat(n - 1) {
-        val x = (2L * a + 2L * b) % MOD
-        val y = (2L * a + 3L * b) % MOD
+        val x = 2 * (a + b) % modulo
+        val y = (x + b) % modulo
         a = x
         b = y
     }
-    return ((a + b) % MOD).toInt()
+    return (a + b).mod(modulo)
 }

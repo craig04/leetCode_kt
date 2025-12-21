@@ -1,6 +1,41 @@
 package cn_solution
 
-fun findAllPeople(n: Int, meetings: Array<IntArray>, firstPerson: Int): List<Int> {
+fun findAllPeople_unionFind(n: Int, meetings: Array<IntArray>, firstPerson: Int): List<Int> {
+    val p = IntArray(n) { it }
+    p[firstPerson] = 0
+    fun find(x: Int): Int {
+        if (p[x] != x)
+            p[x] = find(p[x])
+        return p[x]
+    }
+    meetings.sortBy { it[2] }
+    var i = 0
+    val m = meetings.size
+    while (i != m) {
+        var j = i
+        while (j != m && meetings[j][2] == meetings[i][2]) {
+            val (x, y) = meetings[j++]
+            val u = find(x)
+            val v = find(y)
+            when {
+                u == 0 -> p[v] = 0
+                v == 0 -> p[u] = 0
+                u != v -> p[u] = v
+            }
+        }
+        for (k in i until j) {
+            val (x, y) = meetings[k]
+            if (find(x) != 0)
+                p[x] = x
+            if (find(y) != 0)
+                p[y] = y
+        }
+        i = j
+    }
+    return p.indices.filter { find(it) == 0 }
+}
+
+fun findAllPeople_bfs(n: Int, meetings: Array<IntArray>, firstPerson: Int): List<Int> {
     val s = BooleanArray(n)
     s[0] = true
     s[firstPerson] = true
