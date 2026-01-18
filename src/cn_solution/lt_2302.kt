@@ -1,6 +1,6 @@
 package cn_solution
 
-fun countSubarrays(nums: IntArray, k: Long): Long {
+private fun countSubarrays(nums: IntArray, k: Long): Long {
     var sum = 0L
     var i = -1
     return nums.indices.sumOf { j ->

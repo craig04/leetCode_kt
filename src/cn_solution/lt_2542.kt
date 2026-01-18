@@ -2,7 +2,7 @@ package cn_solution
 
 import java.util.*
 
-fun maxScore(nums1: IntArray, nums2: IntArray, k: Int): Long {
+private fun maxScore(nums1: IntArray, nums2: IntArray, k: Int): Long {
     val indices = nums1.indices.sortedByDescending { nums2[it] }
     val q = PriorityQueue<Int>()
     var sum = 0L

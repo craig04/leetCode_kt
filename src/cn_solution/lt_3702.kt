@@ -2,7 +2,7 @@ package cn_solution
 
 import kotlin.math.sign
 
-fun longestSubsequence(nums: IntArray): Int {
+private fun longestSubsequence(nums: IntArray): Int {
     var xor = 0
     var or = 0
     for (num in nums) {

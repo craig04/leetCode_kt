@@ -3,13 +3,14 @@ package cn_solution
 import base.TreeNode
 import kotlin.math.abs
 
-private fun isBalanced(root: TreeNode?): Boolean {
-    return height(root) != null
-}
-
-private fun height(root: TreeNode?): Int? {
-    root ?: return 0
-    val left = height(root.left) ?: return null
-    val right = height(root.right) ?: return null
-    return if (abs(left - right) > 1) null else maxOf(left, right) + 1
+fun isBalanced(root: TreeNode?): Boolean {
+    fun TreeNode?.height(): Int {
+        this ?: return 0
+        val l = left.height()
+        val r = right.height()
+        if (l < 0 || r < 0 || abs(l - r) > 1)
+            return -1
+        return maxOf(l, r) + 1
+    }
+    return root.height() >= 0
 }
