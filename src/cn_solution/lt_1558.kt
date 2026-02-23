@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minOperations(nums: IntArray): Int {
+private fun minOperations(nums: IntArray): Int {
     var max = 0
     var bit = 0
     for (num in nums) {

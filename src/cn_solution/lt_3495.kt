@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minOperations(queries: Array<IntArray>): Long {
+private fun minOperations(queries: Array<IntArray>): Long {
     fun calc(x: Int): Long {
         val m = 32 - x.countLeadingZeroBits()
         val k = (m - 1) / 2 * 2
