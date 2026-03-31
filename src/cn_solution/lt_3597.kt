@@ -1,6 +1,6 @@
 package cn_solution
 
-fun partitionString(s: String): List<String> {
+private fun partitionString(s: String): List<String> {
     class Node {
         var next = Array(26) { null as Node? }
     }
