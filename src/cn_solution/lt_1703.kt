@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minMoves(nums: IntArray, k: Int): Int {
+private fun minMoves(nums: IntArray, k: Int): Int {
     var ans = Long.MAX_VALUE
     val suf = LongArray(nums.size) { Long.MAX_VALUE / 2 }
     var sum = 0L

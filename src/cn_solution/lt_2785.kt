@@ -1,6 +1,6 @@
 package cn_solution
 
-fun sortVowels(s: String): String {
+private fun sortVowels(s: String): String {
     val vowels = BooleanArray('z' - 'A' + 1)
     val cnt = IntArray(vowels.size)
     "AEIOUaeiou".forEach { vowels[it - 'A'] = true }
