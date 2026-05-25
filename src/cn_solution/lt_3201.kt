@@ -1,6 +1,6 @@
 package cn_solution
 
-fun maximumLength(nums: IntArray): Int {
+private fun maximumLength(nums: IntArray): Int {
     var ans = 0
     var pre = -1
     val cnt = IntArray(2)

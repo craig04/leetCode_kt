@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minCost(n: Int, cost: Array<IntArray>): Long {
+private fun minCost(n: Int, cost: Array<IntArray>): Long {
     val dp = Array(n / 2) { LongArray(9) { Long.MAX_VALUE } }
     for (j in 0 until 9)
         dp[0][j] = if (j / 3 == j % 3) Long.MAX_VALUE else cost[0][j / 3] + cost[n - 1][j % 3] + 0L

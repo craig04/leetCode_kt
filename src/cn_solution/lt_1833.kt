@@ -1,12 +1,17 @@
 package cn_solution
 
 fun maxIceCream(costs: IntArray, coins: Int): Int {
-    costs.sort()
-    var price = 0
-    for (i in costs.indices) {
-        price += costs[i]
-        if (price > coins)
-            return i
+    val cnt = IntArray(100001)
+    for (cost in costs)
+        cnt[cost]++
+    var ans = 0
+    var left = coins
+    for (i in 1 until cnt.size) {
+        val x = minOf(cnt[i], left / i)
+        ans += x
+        left -= x * i
+        if (left < i)
+            break
     }
-    return costs.size
+    return ans
 }
