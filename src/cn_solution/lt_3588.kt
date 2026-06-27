@@ -1,6 +1,6 @@
 package cn_solution
 
-fun maxArea(coords: Array<IntArray>): Long {
+private fun maxArea(coords: Array<IntArray>): Long {
     fun maxArea(): Long {
         val map = HashMap<Int, IntArray>()
         var left = 1000000

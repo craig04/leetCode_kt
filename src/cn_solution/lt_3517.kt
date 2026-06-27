@@ -1,22 +1,16 @@
 package cn_solution
 
 fun smallestPalindrome(s: String): String {
-    val n = s.length
+    val c = s.toCharArray()
     val cnt = IntArray(26)
-    s.forEach { cnt[it - 'a']++ }
-    val ans = CharArray(n)
+    for (i in 0 until c.size / 2)
+        cnt[c[i] - 'a']++
     var i = 0
-    var j = ans.size - 1
+    var j = c.lastIndex
     for (t in cnt.indices)
-        if (cnt[t] % 2 == 1) {
-            ans[n / 2] = 'a' + t
-            cnt[t]--
+        repeat(cnt[t]) {
+            c[i++] = 'a' + t
+            c[j--] = 'a' + t
         }
-    for (t in cnt.indices) {
-        repeat(cnt[t] / 2) {
-            ans[i++] = 'a' + t
-            ans[j--] = 'a' + t
-        }
-    }
-    return String(ans)
+    return String(c)
 }

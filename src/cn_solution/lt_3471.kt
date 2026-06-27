@@ -1,36 +1,23 @@
 package cn_solution
 
 fun largestInteger(nums: IntArray, k: Int): Int {
+    val n = nums.size
     return when (k) {
-        1 -> {
-            val map = HashMap<Int, Int>()
-            nums.forEach { map.merge(it, 1, Int::plus) }
-            var ans = -1
-            for ((num, cnt) in map)
-                if (cnt == 1)
-                    ans = maxOf(ans, num)
-            ans
-        }
-        nums.size -> {
-            nums.max()
-        }
+        n -> nums.max()
+        1 -> nums.asSequence()
+            .groupingBy { it }
+            .eachCount()
+            .filter { it.value == 1 }
+            .maxOfOrNull { it.key } ?: -1
         else -> {
-            var x = 0
-            var y = 0
-            for (num in nums) {
-                if (num == nums.first())
-                    x++
-                else if (num == nums.last())
-                    y++
-                if (x > 1 && y > 1)
-                    break
+            fun test(l: Int, r: Int, p: Int): Int {
+                val num = nums[p]
+                return if ((l until r).any { nums[it] == num })
+                    -1
+                else
+                    num
             }
-            var ans = -1
-            if (x == 1)
-                ans = nums.first()
-            if (y == 1)
-                ans = maxOf(ans, nums.last())
-            ans
+            maxOf(test(0, n - 1, n - 1), test(1, n, 0))
         }
     }
 }
