@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minFlips(s: String): Int {
+private fun minFlips(s: String): Int {
     val zero = s.sumOf { '1' - it }
     var one = s.length - zero
     if (s.first() == '1' && s.last() == '1')

@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minCost(m: Int, n: Int, waitCost: Array<IntArray>): Long {
+private fun minCost(m: Int, n: Int, waitCost: Array<IntArray>): Long {
     val dp = Array(m + 1) { LongArray(n + 1) { Long.MAX_VALUE / 2 } }
     dp[0][1] = 0L - waitCost[0][0]
     for (i in 1..m)

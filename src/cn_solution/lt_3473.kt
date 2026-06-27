@@ -1,6 +1,6 @@
 package cn_solution
 
-fun maxSum(nums: IntArray, k: Int, m: Int): Int {
+private fun maxSum(nums: IntArray, k: Int, m: Int): Int {
     val n = nums.size
     val pre = IntArray(n + 1)
     val dp = IntArray(n + 1)

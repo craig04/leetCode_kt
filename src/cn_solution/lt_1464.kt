@@ -1,9 +1,9 @@
 package cn_solution
 
 private fun maxProduct(nums: IntArray): Int {
-    var a = maxOf(nums[0], nums[1])
-    var b = nums[0] + nums[1] - a
-    for (i in 2 until nums.size) {
+    var a = Int.MIN_VALUE
+    var b = a
+    for (i in nums.indices) {
         val n = nums[i]
         if (n > a) {
             b = a

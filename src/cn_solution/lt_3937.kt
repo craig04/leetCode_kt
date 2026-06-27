@@ -2,7 +2,7 @@ package cn_solution
 
 import kotlin.math.abs
 
-fun minOperations(nums: IntArray, k: Int): Int {
+private fun minOperations(nums: IntArray, k: Int): Int {
     fun operations(start: Int): IntArray {
         return IntArray(k) { i ->
             (start until nums.size step 2).sumOf { j ->

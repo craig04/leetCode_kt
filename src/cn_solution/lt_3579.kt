@@ -1,6 +1,6 @@
 package cn_solution
 
-fun minOperations(word1: String, word2: String): Int {
+private fun minOperations(word1: String, word2: String): Int {
     val cnt = IntArray(26 * 26)
     fun steps(r1: IntProgression, r2: IntProgression): Int {
         val it1 = r1.iterator()

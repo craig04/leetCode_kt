@@ -1,6 +1,6 @@
 package cn_solution
 
-fun maxSubarraySum(nums: IntArray, k: Int): Long {
+private fun maxSubarraySum(nums: IntArray, k: Int): Long {
     val pre = LongArray(k) { Long.MAX_VALUE shr 1 }
     pre[k - 1] = 0
     var ans = Long.MIN_VALUE

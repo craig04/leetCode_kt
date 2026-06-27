@@ -2,7 +2,7 @@ package cn_solution
 
 private const val MOD = 1000000007
 
-fun numberOfWays(corridor: String): Int {
+private fun numberOfWays(corridor: String): Int {
     var s = 0
     var p = 0
     var result = 1L
