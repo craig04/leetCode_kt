@@ -1,6 +1,6 @@
 package cn_solution
 
-fun numberOfArithmeticSlices(nums: IntArray): Int {
+private fun numberOfArithmeticSlices(nums: IntArray): Int {
     if (nums.size == 1)
         return 0
     var result = 0
