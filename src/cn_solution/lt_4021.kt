@@ -2,7 +2,7 @@ package cn_solution
 
 import kotlin.math.abs
 
-fun minOperations(s: String): Int {
+private fun minOperations(s: String): Int {
     var ans = Int.MAX_VALUE
     val t = s + s
     for (i in s.indices) {
