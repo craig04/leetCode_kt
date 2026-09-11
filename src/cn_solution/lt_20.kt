@@ -1,15 +1,15 @@
 package cn_solution
 
 private fun isValid(s: String): Boolean {
-    val stack = CharArray(s.length)
-    var p = 1
+    val map = hashMapOf(')' to '(', '}' to '{', ']' to '[')
+    val buf = CharArray(s.length + 1)
+    var pos = 1
     for (c in s) {
-        when (c) {
-            ')' -> if (stack[--p] != '(') return false
-            ']' -> if (stack[--p] != '[') return false
-            '}' -> if (stack[--p] != '{') return false
-            else -> stack[p++] = c
-        }
+        val x = map[c]
+        if (x == null)
+            buf[pos++] = c
+        else if (buf[--pos] != x)
+            return false
     }
-    return p == 1
+    return pos == 1
 }

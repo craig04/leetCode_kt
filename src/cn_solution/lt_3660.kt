@@ -1,6 +1,6 @@
 package cn_solution
 
-fun maxValue(nums: IntArray): IntArray {
+private fun maxValue(nums: IntArray): IntArray {
     val s = arrayListOf(intArrayOf(0, 0))
     for (i in nums.indices) {
         val max = maxOf(nums[i], s.last()[0])

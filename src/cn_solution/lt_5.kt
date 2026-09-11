@@ -1,6 +1,6 @@
 package cn_solution
 
-fun longestPalindrome(s: String): String {
+private fun longestPalindrome(s: String): String {
     val n = s.length
     val a = CharArray(2 * n + 1) { '#' }
     for (i in 0 until n)
