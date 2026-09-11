@@ -1,24 +1,22 @@
 package cn_solution
 
 fun generateParenthesis(n: Int): List<String> {
-    val result = ArrayList<String>()
-    val sb = StringBuilder()
-    fun dfs(i: Int, j: Int) {
-        if (i == n && j == n) {
-            result.add(sb.toString())
+    val ans = ArrayList<String>()
+    val buf = CharArray(2 * n)
+    fun dfs(l: Int, r: Int) {
+        if (r == n) {
+            ans += String(buf)
             return
         }
-        if (i != n) {
-            sb.append('(')
-            dfs(i + 1, j)
-            sb.setLength(sb.length - 1)
+        if (l != n) {
+            buf[l + r] = '('
+            dfs(l + 1, r)
         }
-        if (i != j) {
-            sb.append(')')
-            dfs(i, j + 1)
-            sb.setLength(sb.length - 1)
+        if (l != r) {
+            buf[l + r] = ')'
+            dfs(l, r + 1)
         }
     }
     dfs(0, 0)
-    return result
+    return ans
 }

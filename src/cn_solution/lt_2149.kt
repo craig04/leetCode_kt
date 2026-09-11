@@ -1,6 +1,6 @@
 package cn_solution
 
-fun rearrangeArray(nums: IntArray): IntArray {
+private fun rearrangeArray(nums: IntArray): IntArray {
     val len = nums.size
     var p = 0
     var n = 0
