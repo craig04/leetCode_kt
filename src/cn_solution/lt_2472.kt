@@ -1,26 +1,23 @@
 package cn_solution
 
 fun maxPalindromes(s: String, k: Int): Int {
+    fun isPalindrome(l: Int, r: Int): Boolean {
+        var x = l
+        var y = r
+        while (x < y)
+            if (s[x++] != s[y--])
+                return false
+        return true
+    }
+
     val n = s.length
-    val p = Array(n) { BooleanArray(n) }
-    fun init(left: Int, right: Int) {
-        var a = left
-        var b = right
-        while (a >= 0 && b < n) {
-            if (s[a] != s[b])
-                break
-            p[a--][b++] = true
-        }
-    }
-    for (i in s.indices) {
-        init(i, i)
-        init(i - 1, i)
-    }
     val dp = IntArray(n + 1)
-    for (i in n - k downTo 0) {
-        dp[i] = (i + k..n).fold(dp[i + 1]) { acc, j ->
-            if (p[i][j - 1]) maxOf(acc, dp[j] + 1) else acc
-        }
+    for (j in k..n) {
+        dp[j] = dp[j - 1]
+        if (isPalindrome(j - k, j - 1))
+            dp[j] = maxOf(dp[j], dp[j - k] + 1)
+        if (j > k && isPalindrome(j - k - 1, j - 1))
+            dp[j] = maxOf(dp[j], dp[j - k - 1] + 1)
     }
-    return dp[0]
+    return dp[n]
 }

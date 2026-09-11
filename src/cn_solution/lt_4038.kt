@@ -1,6 +1,6 @@
 package cn_solution
 
-fun countSpecialIntegers(nums: IntArray): Int {
+private fun countSpecialIntegers(nums: IntArray): Int {
     val map = HashMap<Int, Int>()
     var ans = 0
     for (i in nums.indices) {
