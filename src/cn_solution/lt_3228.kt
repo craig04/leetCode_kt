@@ -1,6 +1,6 @@
 package cn_solution
 
-private fun maxOperations(s: String): Int {
+fun maxOperations(s: String): Int {
     var ans = 0
     var cnt = 0
     for (i in 0 until s.lastIndex)

@@ -1,6 +1,6 @@
 package cn_solution
 
-private fun maxEnergyBoost(energyDrinkA: IntArray, energyDrinkB: IntArray): Long {
+fun maxEnergyBoost(energyDrinkA: IntArray, energyDrinkB: IntArray): Long {
     var a = 0L
     var b = 0L
     var c = 0L

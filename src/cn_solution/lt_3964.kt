@@ -1,6 +1,6 @@
 package cn_solution
 
-private fun minLights(lights: IntArray): Int {
+fun minLights(lights: IntArray): Int {
     val n = lights.size
     val d = IntArray(n + 3)
     for (i in lights.indices) {

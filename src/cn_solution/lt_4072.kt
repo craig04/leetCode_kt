@@ -1,6 +1,6 @@
 package cn_solution
 
-fun maxAlternatingSum(nums: IntArray): Long {
+private fun maxAlternatingSum(nums: IntArray): Long {
     val a = LongArray(4) { Long.MIN_VALUE / 2 }
     val b = LongArray(4)
     return nums.maxOf { x ->

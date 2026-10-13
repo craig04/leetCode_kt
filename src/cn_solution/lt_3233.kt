@@ -1,6 +1,6 @@
 package cn_solution
 
-private fun nonSpecialCount(l: Int, r: Int): Int {
+fun nonSpecialCount(l: Int, r: Int): Int {
     val f = BooleanArray(33333)
     var ans = 0
     for (i in 2 until f.size) {
