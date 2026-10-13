@@ -21,7 +21,7 @@ private fun minOperations(s: String): Int {
     }
     return when {
         sorted -> 0
-        s.length == 2 -> -1
+        n == 2 -> -1
         minPos == 0 || maxPos == n - 1 -> 1
         minPos != n - 1 || maxPos != 0 -> 2
         else -> 3
