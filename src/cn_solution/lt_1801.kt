@@ -3,40 +3,27 @@ package cn_solution
 import java.util.*
 
 fun getNumberOfBacklogOrders(orders: Array<IntArray>): Int {
-    val sell = PriorityQueue(Comparator<IntArray> { l, r -> l[0] - r[0] })
-    val buy = PriorityQueue(Comparator<IntArray> { l, r -> r[0] - l[0] })
-    var result = 0L
+    var ans = 0L
+    val candidates = arrayOf(
+        PriorityQueue<IntArray> { (a), (b) -> b.compareTo(a) },
+        PriorityQueue<IntArray> { (a), (b) -> a.compareTo(b) }
+    )
     for (order in orders) {
-        result += order[1]
-        if (order[2] == 0) {
-            var count = order[1]
-            while (count > 0) {
-                val cheap = sell.peek() ?: break
-                if (cheap[0] > order[0]) break
-                val deal = minOf(count, cheap[1])
-                count -= deal
-                cheap[1] -= deal
-                result -= deal shl 1
-                if (cheap[1] == 0)
-                    sell.poll()
-            }
-            if (count != 0)
-                buy.offer(intArrayOf(order[0], count))
-        } else {
-            var count = order[1]
-            while (count > 0) {
-                val expensive = buy.peek() ?: break
-                if (expensive[0] < order[0]) break
-                val deal = minOf(count, expensive[1])
-                count -= deal
-                expensive[1] -= deal
-                result -= deal shl 1
-                if (expensive[1] == 0)
-                    buy.poll()
-            }
-            if (count != 0)
-                sell.offer(intArrayOf(order[0], count))
+        ans += order[1]
+        val q = candidates[order[2] xor 1]
+        while (order[1] > 0 && q.isNotEmpty()) {
+            val other = q.peek()
+            if (order[0].compareTo(other[0]) == order[2].compareTo(other[2]))
+                break
+            val count = minOf(order[1], other[1])
+            order[1] -= count
+            other[1] -= count
+            ans -= count * 2
+            if (other[1] == 0)
+                q.poll()
         }
+        if (order[1] > 0)
+            candidates[order[2]] += order
     }
-    return (result % 1000000007).toInt()
+    return ans.mod(1000000007)
 }

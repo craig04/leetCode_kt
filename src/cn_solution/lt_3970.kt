@@ -6,20 +6,18 @@ fun shortestPath(n: Int, edges: Array<IntArray>, labels: String, k: Int): Int {
         g[edge[0]].add(edge)
     val dis = Array(n) { IntArray(k + 1) { Int.MAX_VALUE } }
     dis[0][1] = 0
-    val q = java.util.PriorityQueue<IntArray> { a, b -> a[0] - b[0] }
-    q.offer(intArrayOf(0, 0, 1))
+    val q = java.util.PriorityQueue<IntArray> { (a), (b) -> a - b }
+    q += intArrayOf(0, 0, 1)
     while (q.isNotEmpty()) {
-        val (curr, u, cnt) = q.poll()
-        if (curr != dis[u][cnt])
+        val (curr, u, x) = q.poll()
+        if (curr != dis[u][x])
             continue
         for ((_, v, w) in g[u]) {
             val next = curr + w
-            if (labels[u] != labels[v] && next < dis[v][1]) {
-                dis[v][1] = next
-                q.offer(intArrayOf(next, v, 1))
-            } else if (labels[u] == labels[v] && cnt != k && next < dis[v][cnt + 1]) {
-                dis[v][cnt + 1] = next
-                q.offer(intArrayOf(next, v, cnt + 1))
+            val y = if (labels[u] == labels[v]) x + 1 else 1
+            if (y <= k && next < dis[v][y]) {
+                dis[v][y] = next
+                q += intArrayOf(next, v, y)
             }
         }
     }
