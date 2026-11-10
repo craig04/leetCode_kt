@@ -2,7 +2,7 @@ package cn_solution
 
 fun maxProfit(prices: IntArray, strategy: IntArray, k: Int): Long {
     val profit = IntArray(prices.size) { prices[it] * strategy[it] }
-    val ans = profit.fold(0L, Long::plus)
+    val ans = profit.sumOf(Int::toLong)
     var cur = (0 until k / 2).fold(0L) { res, i ->
         val j = i + k / 2
         res + prices[j] - profit[j] - profit[i]

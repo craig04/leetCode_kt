@@ -1,7 +1,7 @@
 package cn_solution
 
 fun smallestBalancedIndex(nums: IntArray): Int {
-    var sum = nums.fold(0L, Long::plus)
+    var sum = nums.sumOf(Int::toLong)
     var mul = 1L
     var ans = -1
     for (i in nums.indices.reversed()) {
