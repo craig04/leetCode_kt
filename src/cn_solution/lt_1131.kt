@@ -1,31 +1,16 @@
 package cn_solution
 
-fun watchedVideosByFriends(
-    watchedVideos: List<List<String>>,
-    friends: Array<IntArray>,
-    id: Int,
-    level: Int
-): List<String> {
-    val vis = BooleanArray(friends.size)
-    val queue = ArrayDeque<Int>()
-    vis[id] = true
-    queue.add(id)
-    repeat(level) {
-        repeat(queue.size) {
-            val x = queue.removeFirst()
-            for (y in friends[x]) {
-                if (!vis[y]) {
-                    vis[y] = true
-                    queue.addLast(y)
-                }
-            }
-        }
+fun maxAbsValExpr(arr1: IntArray, arr2: IntArray): Int {
+    var (a, b, c, d) = IntArray(4) { Int.MIN_VALUE }
+    return arr1.indices.maxOf { i ->
+        val x = arr1[i] + arr2[i] - i
+        val y = arr1[i] - arr2[i] - i
+        val z = -arr1[i] + arr2[i] - i
+        val w = -arr1[i] - arr2[i] - i
+        a = maxOf(a, x)
+        b = maxOf(b, y)
+        c = maxOf(c, z)
+        d = maxOf(d, w)
+        maxOf(a - x, b - y, c - z, d - w)
     }
-    val cnt = HashMap<String, Int>()
-    for (friend in queue)
-        for (video in watchedVideos[friend])
-            cnt.merge(video, 1, Int::plus)
-    return cnt.entries
-        .sortedWith(compareBy({ it.value }, { it.key }))
-        .map { it.key }
 }

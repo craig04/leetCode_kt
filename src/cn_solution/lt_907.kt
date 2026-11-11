@@ -1,20 +1,16 @@
 package cn_solution
 
 fun sumSubarrayMins(arr: IntArray): Int {
-    val pos = ArrayList<Int>()
-    val dp = ArrayList<Int>()
-    val mod = 1000000007
-    return arr.indices.fold(0) { acc, i ->
-        val n = arr[i]
-        while (pos.isNotEmpty() && n <= arr[pos.last()])
-            pos.removeAt(pos.lastIndex)
-        val temp = if (pos.isEmpty()) {
-            n * (i + 1)
-        } else {
-            n * (i - pos.last()) % mod + dp[pos.last()]
-        } % mod
-        pos.add(i)
-        dp.add(temp)
-        (acc + temp) % mod
+    val s = arrayListOf(intArrayOf(-1, -1))
+    val n = arr.size
+    var ans = 0L
+    for (r in 0..n) {
+        val x = if (r == n) 0 else arr[r]
+        while (s.last()[0] >= x) {
+            val (y, m) = s.removeLast()
+            ans += 1L * (m - s.last()[1]) * (r - m) * y
+        }
+        s += intArrayOf(x, r)
     }
+    return ans.mod(1000000007)
 }
